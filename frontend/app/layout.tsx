@@ -1,5 +1,7 @@
 /* eslint-disable @next/next/no-head-element */
 
+import Link from "next/link";
+
 export default function RootLayout({
   children,
 }: {
@@ -9,7 +11,11 @@ export default function RootLayout({
     <html>
       <head></head>
       <body>
-        <header>ANA SAYFA LINKI HEADER</header>
+        <header>
+          <Link href="/">
+           ANA SAYFA LINKI HEADER
+          </Link>
+        </header>
         {children}
       </body>
     </html>

@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-head-element */
-
 import Link from "next/link";
+import '@/styles/globals.css';
 
 export default function RootLayout({
   children,
@@ -13,7 +13,8 @@ export default function RootLayout({
       <body>
         <header>
           <Link href="/">
-           ANA SAYFA LINKI HEADER
+
+           <h3>SOLPirates</h3> 
           </Link>
         </header>
         {children}

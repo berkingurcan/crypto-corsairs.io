@@ -1,6 +1,14 @@
 /* eslint-disable @next/next/no-head-element */
-import Link from "next/link";
+import { Quicksand } from "@next/font/google";
+import '@/styles/reset.css';
 import '@/styles/globals.css';
+import Header from "@/components/header";
+import Footer from "@/components/footer";
+
+const quicksandFontFamily = Quicksand({
+  subsets: ['latin'],
+  weight: "300"
+})
 
 export default function RootLayout({
   children,
@@ -8,16 +16,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html>
+    <html className={quicksandFontFamily.className}>
       <head></head>
-      <body>
-        <header>
-          <Link href="/">
-
-           <h3>SOLPirates</h3> 
-          </Link>
-        </header>
-        {children}
+      <body className="container">
+        <Header />
+        <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );

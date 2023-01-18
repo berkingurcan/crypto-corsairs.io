@@ -1,0 +1,102 @@
+.movieWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 56px;
+    margin-bottom: 56px;
+  }
+  
+  .moviePoster {
+  }
+  
+  .movieTitle {
+    font-size: 48px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 900;
+    line-height: 72px;
+    max-width: 25ch;
+  }
+  
+  .overview {
+    font-size: 24px;
+    max-width: 50ch;
+  }
+  
+  .shortOverview {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .actionButtons {
+    display: flex;
+    gap: 12px;
+  }
+  
+  .addButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #eee;
+    border-radius: 999px;
+    width: 62px;
+    height: 62px;
+    color: #eee;
+  }
+  
+/*   .playButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #eee;
+    color: #222;
+    width: 400px;
+    border-radius: 50px;
+    font-size: 32px;
+    font-weight: 600;
+  } */
+
+  .playButton {
+    display:inline-block;
+    padding:0.35em 1.2em;
+    border:0.1em solid #FFFFFF;
+    margin:0 0.3em 0.3em 0;
+    border-radius:0.12em;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-weight:300;
+    color:#FFFFFF;
+    text-align:center;
+    transition: all 0.2s;
+    }
+
+    .playButton:hover{
+    color:#000000;
+    background-color:#FFFFFF;
+    }
+  
+  .moviePosterOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 0.9) 30%,
+      rgba(0, 0, 0, 0.7) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    z-index: -1;
+  }
+  
+  .moviePoster img {
+    height: auto !important;
+    z-index: -2;
+    max-height: 100vh;
+    object-fit: cover;
+  }
+  

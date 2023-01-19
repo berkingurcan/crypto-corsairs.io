@@ -11,7 +11,6 @@ async function getCourse(id: any) {
     } catch (error) {
         console.log(error)
     }
-    
 }
   
 

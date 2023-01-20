@@ -3,6 +3,7 @@ import React from 'react'
 import dynamic from 'next/dynamic'
 import fs from 'fs'
 import path from 'path'
+import styles from './style.module.css'
 
 async function getCourse(id: any) {
     try {
@@ -19,10 +20,15 @@ async function CourseLanding({course_id}: any) {
     const [course] = await Promise.all([DynamicCourse])
 
   return (
-    <div>
-      <h1>Title: {course.title}</h1>
+    <div className={styles.landing}>
+      <h1>{course.title}</h1>
       <p>{course.introduction_paragraph}</p>
-      <Link href={`/course/${course.id}/1`}>Start Course {course_id}</Link>
+      <div>
+        <Link className={styles.playButton} href={`/course/${course.id}/1` }>Start Course {course_id}</Link>
+      </div>
+      <div>
+        <Link className={styles.playButton} href={`/course` }>COURSES</Link>
+      </div>
     </div>
   )
 }

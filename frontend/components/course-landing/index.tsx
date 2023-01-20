@@ -1,8 +1,5 @@
 import Link from 'next/link'
 import React from 'react'
-import dynamic from 'next/dynamic'
-import fs from 'fs'
-import path from 'path'
 import styles from './style.module.css'
 
 async function getCourse(id: any) {

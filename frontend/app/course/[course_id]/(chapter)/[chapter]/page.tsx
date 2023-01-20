@@ -1,9 +1,13 @@
-export default function ChapterPage({params}: any) {
-    return (
-        <div>
-            Course: {params.course_id}
-            <br />
-            Chapter: {params.chapter}
-        </div>
-    );
+import React from 'react';
+import Chapter from '@/containers/chapter';
+
+function ChapterPage({params}: any) {
+  console.log(params)
+  return (
+    <div>
+      <Chapter course_id={params.course_id} chapter_id={params.chapter} />
+    </div>
+  );
 }
+
+export default ChapterPage;

@@ -1,6 +1,6 @@
 import React from 'react'
 import Instructions from '@/components/instructions';
-import Editor from '@/components/editor';
+import CodeEditor from '@/components/editor';
 import DiffEditor from '@/components/diff-editor';
 import Sidebar from '@/components/sidebar';
 
@@ -24,9 +24,9 @@ async function Chapter({course_id, chapter_id}: any) {
 
   return (
     <div>
-        <Instructions chapter_id={chapter_id} />
-        <Editor chapter_id={chapter_id}/>
-        <DiffEditor chapter_id={chapter_id}/>
+        <Instructions course_id={course_id} chapter_id={chapter_id} />
+        <CodeEditor course_id={course_id} chapter_id={chapter_id}/>
+        <DiffEditor course_id={course_id} chapter_id={chapter_id}/>
         <Sidebar course_id={course_id} chapter_id={chapter_id}/>   
     </div>
   )

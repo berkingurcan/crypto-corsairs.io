@@ -14,18 +14,18 @@ async function getCourse(id: any) {
 }
 
 async function Chapter({course_id, chapter_id}: any) {
-  console.log(course_id, chapter_id)
-
   const DynamicCourse = getCourse(course_id);
   const [course] = await Promise.all([DynamicCourse])
 
-  // Example usage of the chapter obj
-  console.log(course.chapters[chapter_id].answer_code)
+  console.log(course.chapters[chapter_id].initial_code)
 
   return (
     <div>
         <Instructions course_id={course_id} chapter_id={chapter_id} />
-        <CodeEditor course_id={course_id} chapter_id={chapter_id}/>
+        <CodeEditor 
+          initial_code={course.chapters[chapter_id-1].initial_code} 
+          answer_code={course.chapters[chapter_id-1].answer_code}
+        />
         <DiffEditor course_id={course_id} chapter_id={chapter_id}/>
         <Sidebar course_id={course_id} chapter_id={chapter_id}/>   
     </div>

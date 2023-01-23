@@ -21,7 +21,7 @@ async function Chapter({course_id, chapter_id}: any) {
 
   return (
     <div>
-        <Instructions course_id={course_id} chapter_id={chapter_id} />
+        <Instructions instructions={course.chapters[chapter_id-1].instructions} />
         <CodeEditor 
           initial_code={course.chapters[chapter_id-1].initial_code} 
           answer_code={course.chapters[chapter_id-1].answer_code}

@@ -35,7 +35,7 @@
             "code_block": "let x: i32 = 5;\nlet y: f32 = 10.5;\nlet s: &str = \"Hello, Rust!\";"
           }
         ],
-        "initial_code": "",
+        "initial_code": "fn main() {\n    println!(\"Hello, CHAPTERRR2\");\n}",
         "answer_code": "let x = 5;\nlet y = 10.5;\nlet s = \"Hello, Rust!\";\nprintln!(\"x = {}\", x);\nprintln!(\"y = {}\", y);\nprintln!(\"s = {}\", s);"
       },
       {

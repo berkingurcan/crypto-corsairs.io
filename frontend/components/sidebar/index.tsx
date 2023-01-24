@@ -18,7 +18,9 @@ import { AddIcon, HamburgerIcon } from '@chakra-ui/icons';
 function Sidebar({courseTitle, course_id, chapter_id, chapters}: any) {
   return (
     <div>
-      <Menu direction='ltr'>
+      <Menu 
+        direction='ltr'
+      >
         <MenuButton
           as={IconButton}
           aria-label='Options'
@@ -29,10 +31,14 @@ function Sidebar({courseTitle, course_id, chapter_id, chapters}: any) {
         {chapters.map((chapter: any) => {
           return (
             <div key={chapter}>
-                <MenuList>
+                <MenuList 
+                  zIndex={10} 
+                  position='absolute' 
+                  bottom='100%'
+                >
                   <MenuItem>
                     <Link href={`/course/${course_id}/${chapter.id}`}> 
-                    - Chapter {chapter.id}: {chapter.title}
+                     Chapter {chapter.id}: {chapter.title}
                     </Link>
                   </MenuItem>
                 </MenuList>

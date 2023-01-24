@@ -11,6 +11,7 @@ function CodeEditor({initial_code, answer_code}: any) {
         height="90vh"
         defaultLanguage="rust"
         defaultValue={initial_code}
+        theme="vs-dark"
       />
     </div>
   );

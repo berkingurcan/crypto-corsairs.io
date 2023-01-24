@@ -27,6 +27,7 @@ function Sidebar({courseTitle, course_id, chapter_id, chapters}: any) {
           as={IconButton}
           aria-label='Options'
           icon={<HamburgerIcon />}
+          variant='outline'
           color='white'
           onClick={onOpen}
           className={styles.MenuButton}

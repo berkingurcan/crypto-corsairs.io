@@ -2,12 +2,13 @@
 import React from 'react';
 import Editor from "@monaco-editor/react";
 import { DiffEditor } from '@monaco-editor/react';
+import styles from './styles.module.css';
 
 function CodeEditor({initial_code, answer_code}: any) {
   console.log(initial_code, answer_code)
 
   return (
-    <div>
+    <div className={styles.editor}>
       <Editor
         height="75%"
         defaultLanguage="rust"

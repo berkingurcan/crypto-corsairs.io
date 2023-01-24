@@ -8,7 +8,7 @@ function CodeEditor({initial_code, answer_code}: any) {
   return (
     <div>
       <Editor
-        height="90vh"
+        height="100%"
         defaultLanguage="rust"
         defaultValue={initial_code}
         theme="vs-dark"

@@ -1,0 +1,16 @@
+.mainSection {
+    display: grid;
+    grid-template-columns: 1fr; /* repeat(3, minmax(180px, 1fr)); */
+    grid-template-rows: 23fr 1fr;
+}
+
+.rowWorkplace {
+    display: grid;
+    grid-template-columns: 2fr 3fr; 
+}
+
+.rowButtons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+

@@ -3,6 +3,7 @@ import Instructions from '@/components/instructions';
 import CodeEditor from '@/components/editor';
 import DiffEditor from '@/components/diff-editor';
 import Sidebar from '@/components/sidebar';
+import styles from './styles.module.css';
 
 async function getCourse(id: any) {
   try {
@@ -21,13 +22,19 @@ async function Chapter({course_id, chapter_id}: any) {
 
   return (
     <div>
-        <Instructions instructions={course.chapters[chapter_id-1].instructions} />
-        <CodeEditor 
-          initial_code={course.chapters[chapter_id-1].initial_code} 
-          answer_code={course.chapters[chapter_id-1].answer_code}
-        />
-        <DiffEditor course_id={course_id} chapter_id={chapter_id}/>
-        <Sidebar course_id={course_id} chapter_id={chapter_id}/>   
+      <div className={styles.mainSection}>
+        <div className={styles.rowWorkplace}>
+          <Instructions instructions={course.chapters[chapter_id-1].instructions} />
+          <CodeEditor 
+            initial_code={course.chapters[chapter_id-1].initial_code} 
+            answer_code={course.chapters[chapter_id-1].answer_code}
+          />
+        </div>
+        <div className={styles.rowButtons}>
+          <Sidebar course_id={course_id} chapter_id={chapter_id}/>   
+          <DiffEditor course_id={course_id} chapter_id={chapter_id}/>
+        </div>
+      </div>
     </div>
   )
 }

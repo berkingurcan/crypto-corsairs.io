@@ -41,7 +41,6 @@ function Sidebar({courseTitle, course_id, chapter_id, chapters}: any) {
         closeOnEsc={true}
         closeOnOverlayClick={true}
       >
-        
         <DrawerOverlay/>
         <DrawerContent>
           <DrawerCloseButton color='white'/>

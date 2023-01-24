@@ -26,6 +26,17 @@ async function CourseLanding({course_id}: any) {
       <div>
         <Link className={styles.playButton} href={`/course` }>COURSES</Link>
       </div>
+      {
+        course.chapters.map((chapter: any) => {
+          return (
+            <div key={chapter}> 
+              <ul>
+                Chapter {chapter.id}: {chapter.title}
+              </ul>
+            </div>
+          )
+        })
+      }
     </div>
   )
 }

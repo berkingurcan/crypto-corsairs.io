@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import Editor from "@monaco-editor/react";
+import { DiffEditor } from '@monaco-editor/react';
 
 function CodeEditor({initial_code, answer_code}: any) {
   console.log(initial_code, answer_code)
@@ -8,10 +9,17 @@ function CodeEditor({initial_code, answer_code}: any) {
   return (
     <div>
       <Editor
-        height="100%"
+        height="75%"
         defaultLanguage="rust"
         defaultValue={initial_code}
         theme="vs-dark"
+      />
+      <DiffEditor 
+        height="20%"
+        language="rust"
+        theme="vs-dark"
+        modified=''
+        original=''
       />
     </div>
   );

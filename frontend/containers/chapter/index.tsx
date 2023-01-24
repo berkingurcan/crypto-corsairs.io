@@ -1,9 +1,10 @@
 import React from 'react'
 import Instructions from '@/components/instructions';
 import CodeEditor from '@/components/editor';
-import DiffEditor from '@/components/diff-editor';
 import Sidebar from '@/components/sidebar';
 import styles from './styles.module.css';
+import ChapterButtons from '@/components/chapter-buttons';
+import CheckButton from '@/components/check-button';
 
 async function getCourse(id: any) {
   try {
@@ -32,7 +33,8 @@ async function Chapter({course_id, chapter_id}: any) {
         </div>
         <div className={styles.rowButtons}>
           <Sidebar course_id={course_id} chapter_id={chapter_id}/>   
-          <DiffEditor course_id={course_id} chapter_id={chapter_id}/>
+          <CheckButton />
+          <ChapterButtons course_id={course_id} chapter_id={chapter_id} />
         </div>
       </div>
     </div>

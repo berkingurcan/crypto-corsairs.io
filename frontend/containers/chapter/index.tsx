@@ -19,8 +19,6 @@ async function Chapter({course_id, chapter_id}: any) {
   const DynamicCourse = getCourse(course_id);
   const [course] = await Promise.all([DynamicCourse])
 
-  console.log(course.chapters[chapter_id].initial_code)
-
   return (
     <div>
       <div className={styles.mainSection}>
@@ -32,7 +30,7 @@ async function Chapter({course_id, chapter_id}: any) {
           />
         </div>
         <div className={styles.rowButtons}>
-          <Sidebar course_id={course_id} chapter_id={chapter_id}/>   
+          <Sidebar title={course.courseTitle} course_id={course_id} chapter_id={chapter_id} chapters={course.chapters}/>   
           <CheckButton />
           <ChapterButtons course_id={course_id} chapter_id={chapter_id} />
         </div>

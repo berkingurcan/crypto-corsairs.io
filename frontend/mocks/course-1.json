@@ -73,7 +73,7 @@
             "code_block": "mod my_module {\n    fn add(x: i32, y: i32) -> i32 {\n        x + y\n    }\n}\nlet result = my_module::add(5, 10);\nprintln!(\"result = {}\", result);"
           }
         ],
-        "initial_code": "",
+        "initial_code": ":D",
         "answer_code": "fn add(x: i32, y: i32) -> i32 {\n    x + y\n}\nlet result =x"
         }   
     ]

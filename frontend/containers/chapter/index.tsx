@@ -30,7 +30,7 @@ async function Chapter({course_id, chapter_id}: any) {
           />
         </div>
         <div className={styles.rowButtons}>
-          <Sidebar title={course.courseTitle} course_id={course_id} chapter_id={chapter_id} chapters={course.chapters}/>   
+          <Sidebar courseTitle={course.title} course_id={course_id} chapter_id={chapter_id} chapters={course.chapters}/>   
           <CheckButton />
           <ChapterButtons course_id={course_id} chapter_id={chapter_id} />
         </div>

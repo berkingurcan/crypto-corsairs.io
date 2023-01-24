@@ -73,9 +73,60 @@
             "code_block": "mod my_module {\n    fn add(x: i32, y: i32) -> i32 {\n        x + y\n    }\n}\nlet result = my_module::add(5, 10);\nprintln!(\"result = {}\", result);"
           }
         ],
-        "initial_code": ":D",
+        "initial_code": "fn add(x: i32, y: i32) -> i32 {\n    x + y\n}\nlet result =x",
         "answer_code": "fn add(x: i32, y: i32) -> i32 {\n    x + y\n}\nlet result =x"
-        }   
-    ]
+      },
+      {
+        "id": "5",
+        "title": "Structs and Enums",
+        "task_description": "In this chapter, you will learn about structs and enums in Rust, and how to use them to create custom data types.",
+        "instructions": [
+        {
+        "text": "Rust structs are used to define custom data types, with named fields and types. Here is an example:",
+        "code_block": "struct Point {\n x: i32,\n y: i32\n}\nlet my_point = Point { x: 1, y: 2 };"
+        },
+        {
+        "text": "Rust enums are used to define a set of named variants. Here is an example:",
+        "code_block": "enum Color {\n Red,\n Green,\n Blue\n}\nlet my_color = Color::Blue;\nmatch my_color {\n Color::Red => ,\n Color::Blue => println!\n}"
+        }
+        ],
+        "initial_code": "String::from(\"hello\")",
+        "answer_code": "struct Point {\n x: i32,\n y: i32\n}\nlet my_point = Point { x: 1, y: 2 };"
+      },
+      {
+        "id": "6",
+        "title": "Rust Ownership and Borrowing",
+        "task_description": "In this chapter, you will learn about Rust's ownership and borrowing concepts, which are central to the language's memory management model.",
+        "instructions": [
+          {
+            "text": "Rust's ownership model allows for safe and efficient memory management by ensuring that a value can only have one owner at a time. Here is an example:",
+            "code_block": "fn main() {\n    let s = String::from(\"hello\");\n    takes_ownership(s);\n}\nfn takes_ownership(some_string: String) {\n    println!(\"{}\", some_string);\n}"
+          },
+          {
+            "text": "Rust's borrowing model allows for safe and efficient memory management by allowing for multiple references to the same value, but not allowing for modification of the value. Here is an example:",
+            "code_block": "fn main() {\n    let s1 = String::from(\"hello\");\n    let len = calculate_length(&s1);\n    println!(\"The length of '{}' is {}.\", s1, len);\n}\nfn calculate_length(s: &String) -> usize {\n    s.len()\n}"
+          }
+        ],
+        "initial_code": "String::from(\"hello\")",
+        "answer_code": "fn main() {\n    let s = String::from(\"hello\");\n    takes_ownership(s);\n}\nfn takes_ownership(some_string: String) {\n    println!(\"{}\", some_string);\n}"
+      },
+      {
+        "id": "7",
+        "title": "Rust Traits and Generics",
+        "task_description": "In this chapter, you will learn about Rust's trait and generic system, which allows for the creation of flexible and reusable code.",
+        "instructions": [
+          {
+            "text": "Rust traits are used to define a set of common functionality that can be implemented by multiple types. Here is an example:",
+            "code_block": "trait Summary {\n    fn summarize(&self) -> String;\n}\nstruct NewsArticle { ... }\nimpl Summary for NewsArticle { ... }\nstruct Tweet { ... }\nimpl Summary for Tweet { ... }"
+          },
+          {
+            "text": "Rust generics allow for the creation of flexible types and functions that can work with multiple types. Here is an example:",
+            "code_block": "fn largest<T: PartialOrd + Copy>(list: &[T]) -> T {\n    let mut largest = list[0];\n    for &item in list.iter() {\n        if item > largest {\n            largest = item;\n        }\n    }\n    largest\n}"
+          }
+        ],
+        "initial_code": "let mut x = 5; while x > 0 { println!( x); x -= 1; }",
+        "answer_code": "trait Summary {\n    fn summarize(&self) -> String;\n}\nstruct NewsArticle { ... }\nimpl Summary for NewsArticle { ... }\nstruct Tweet { ... }\nimpl Summary"
+      }
+    ] 
   }
   

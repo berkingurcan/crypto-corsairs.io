@@ -38,7 +38,7 @@
     border-radius: 3px;
     margin-top: 24px;
     position: relative;
-    box-shadow: 0 5px 10px 0 rgba(53, 138, 53, 0.5);
+    box-shadow: 0 5px 10px 0 #4a62cb;
     transition: transform 0.3s ease;
     display: flex;
   }

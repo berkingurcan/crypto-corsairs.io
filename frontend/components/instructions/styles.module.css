@@ -2,14 +2,14 @@
 
 .insContainer {
     border: 1px solid;
-    border-color: rgb(13, 11, 40);
+    border-color: rgba(74, 98, 203, 0.2);
     height: 73vh;
     width: 100%;
     overflow-y: scroll;
     border-radius: 10px;
     padding: 14px;
-    background: linear-gradient(to left, #050300, #070416);
-    box-shadow: 3px 3px 5px rgb(12, 6, 45);
+    background: linear-gradient(to right, #050300, #0c1021);
+    box-shadow: 1px #4a62cb;
     font-family: 'Anonymous Pro', monospace;
 }
 

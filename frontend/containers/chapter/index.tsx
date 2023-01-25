@@ -23,7 +23,7 @@ async function Chapter({course_id, chapter_id}: any) {
     <div>
       <div className={styles.mainSection}>
         <div className={styles.rowWorkplace}>
-          <Instructions instructions={course.chapters[chapter_id-1].instructions} />
+          <Instructions instructions={course.chapters[chapter_id-1].instructions} chapter_title={course.chapters[chapter_id-1].title} />
           <CodeEditor 
             initial_code={course.chapters[chapter_id-1].initial_code} 
             answer_code={course.chapters[chapter_id-1].answer_code}

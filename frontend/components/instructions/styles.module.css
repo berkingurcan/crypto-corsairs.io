@@ -1,0 +1,18 @@
+.insContainer {
+    border: 1px solid;
+    border-color: rgb(13, 11, 40);
+    height: 73vh;
+    width: 100%;
+    overflow-y: scroll;
+    border-radius: 10px;
+    padding: 14px;
+    background: linear-gradient(to left, #050300, #070416);
+    box-shadow: 3px 3px 5px rgb(12, 6, 45);
+}
+
+@media (max-width: 768px) {
+    .insContainer {
+        height: 50%;
+        width: 80%;
+    }
+}

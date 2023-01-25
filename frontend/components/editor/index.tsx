@@ -1,7 +1,7 @@
 'use client';
 import React, {useEffect} from 'react';
 import Editor from "@monaco-editor/react";
-import { DiffEditor, useMonaco } from '@monaco-editor/react';
+import { DiffEditor, useMonaco, Monaco } from '@monaco-editor/react';
 import styles from './styles.module.css';
 import 'monaco-themes/themes/Blackboard.json';
 
@@ -20,12 +20,20 @@ function CodeEditor({initial_code, answer_code}: any) {
     }
   }, [monaco]);
 
+  const options: Monaco.IStandaloneEditorConstructionOptions = {
+    readOnly: false,
+    minimap: { enabled: false },
+    enableSplitViewResizing: false,
+	  renderSideBySide: false
+};
+
   return (
     <div className={styles.editor}>
       <Editor
         height="75%"
         defaultLanguage="rust"
         defaultValue={initial_code}
+        options = {options}
         theme=""
       />
       <DiffEditor 
@@ -34,6 +42,7 @@ function CodeEditor({initial_code, answer_code}: any) {
         theme="vs-dark"
         modified=''
         original=''
+        options = {options}
       />
     </div>
   );

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro&display=swap');
+
 .insContainer {
     border: 1px solid;
     border-color: rgb(13, 11, 40);
@@ -8,6 +10,7 @@
     padding: 14px;
     background: linear-gradient(to left, #050300, #070416);
     box-shadow: 3px 3px 5px rgb(12, 6, 45);
+    font-family: 'Anonymous Pro', monospace;
 }
 
 @media (max-width: 768px) {

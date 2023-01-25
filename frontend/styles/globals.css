@@ -2,7 +2,8 @@ body {
   background-color: black;
   font-size: 16px;
   color: azure;
-  font-family: 'Quicksand', sans-serif;}
+  font-family: 'Quicksand', sans-serif;
+}
 
 div[data-nextjs-scroll-focus-boundary] {
   height: 100%;

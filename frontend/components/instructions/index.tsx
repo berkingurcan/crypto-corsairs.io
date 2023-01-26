@@ -1,7 +1,7 @@
 'use client';
 import React from 'react'
 import styles from './styles.module.css'
-import { CopyBlock, vs2015 } from "react-code-blocks";
+import { CodeBlock, dracula } from "react-code-blocks";
 
 
 interface Instruction {
@@ -22,11 +22,11 @@ function Instructions({instructions, chapter_title}: {instructions: Instruction[
             <p> {text} </p>
             <br />
             {code_block == null ? <br /> : 
-              <CopyBlock
+              <CodeBlock
                 text={code_block}
                 language='rust'
                 showLineNumbers={false}
-                theme={vs2015}
+                theme={dracula} // maybe use obsidian
               />
             }
             

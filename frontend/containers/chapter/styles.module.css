@@ -1,7 +1,7 @@
 .mainSection {
     display: grid;
     grid-template-columns: 1fr; /* repeat(3, minmax(180px, 1fr)); */
-    grid-template-rows: 23fr 1fr;
+    grid-template-rows: 10fr 2fr;
 }
 
 .rowWorkplace {
@@ -11,6 +11,7 @@
 
 .rowButtons {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 1rem
 }
 

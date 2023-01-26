@@ -1,10 +1,10 @@
 import React from 'react'
 import styles from './styles.module.css'
 
-function CheckButton() {
+function CheckButton({user_answer, answer}: any) {
   return (
     <div>
-      CHECK ANSWER
+      <button className={styles.checkButton}>CHECK ANSWER</button>
     </div>
   )
 }

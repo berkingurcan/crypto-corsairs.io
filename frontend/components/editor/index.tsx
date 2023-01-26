@@ -1,12 +1,17 @@
 'use client';
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import Editor from "@monaco-editor/react";
 import { DiffEditor, useMonaco, Monaco } from '@monaco-editor/react';
 import styles from './styles.module.css';
 import 'monaco-themes/themes/Blackboard.json';
 
+
+
 function CodeEditor({initial_code, answer_code}: any) {
   const monaco = useMonaco();
+  const [userAnswer, setUserAnswer] = useState(initial_code);
+
+  console.log(userAnswer)
 
   useEffect(() => {
     if (monaco) {
@@ -30,11 +35,13 @@ function CodeEditor({initial_code, answer_code}: any) {
   return (
     <div className={styles.editor}>
       <Editor
-        height="75%"
+        height='80%'
+        width = '100%'
         defaultLanguage="rust"
         defaultValue={initial_code}
         options = {options}
         theme=""
+        onChange={(e) => setUserAnswer(e)}
       />
       <DiffEditor 
         height="20%"

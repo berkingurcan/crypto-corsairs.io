@@ -46,6 +46,7 @@ function CodeEditor({initial_code, answer_code}: any) {
       />
       <DiffEditor 
         height="20%"
+        width="100%"
         language="rust"
         theme="vs-dark"
         modified=''

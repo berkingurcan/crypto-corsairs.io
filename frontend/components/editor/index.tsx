@@ -18,9 +18,9 @@ function CodeEditor({initial_code, answer_code}: any) {
       console.log("here is the monaco isntance:", monaco);
       import('monaco-themes/themes/Blackboard.json')
         .then(data => {
-          monaco.editor.defineTheme('dracula', data);
+          monaco.editor.defineTheme('Blackboard', data);
         })
-        .then(_ => monaco.editor.setTheme('dracula'))
+        .then(_ => monaco.editor.setTheme('Blackboard'))
       // monaco.editor.defineTheme("monokai-bright").then(_ => monaco.editor.setMonacoTheme("monokai-bright"));
     }
   }, [monaco]);

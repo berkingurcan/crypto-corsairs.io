@@ -13,16 +13,16 @@ function CodeEditor({initial_code, answer_code}: any) {
 
   console.log(userAnswer)
 
-  useEffect(() => {
+  const setMonacoTheme = async () => {
     if (monaco) {
-      console.log("here is the monaco isntance:", monaco);
-      import('monaco-themes/themes/Blackboard.json')
-        .then(data => {
-          monaco.editor.defineTheme('Blackboard', data);
-        })
-        .then(_ => monaco.editor.setTheme('Blackboard'))
-      // monaco.editor.defineTheme("monokai-bright").then(_ => monaco.editor.setMonacoTheme("monokai-bright"));
+      const data = await import('monaco-themes/themes/Blackboard.json');
+      monaco.editor.defineTheme('Blackboard', data);
+      monaco.editor.setTheme('Blackboard');
     }
+  }
+  
+  useEffect(() => {
+    setMonacoTheme();
   }, [monaco]);
 
   const options: Monaco.IStandaloneEditorConstructionOptions = {
@@ -42,6 +42,7 @@ function CodeEditor({initial_code, answer_code}: any) {
         options = {options}
         theme=""
         onChange={(e) => setUserAnswer(e)}
+        onMount = {setMonacoTheme}
       />
       <DiffEditor 
         height="20%"

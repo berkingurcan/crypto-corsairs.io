@@ -1,7 +1,6 @@
 import React from 'react'
 import Instructions from '@/components/instructions';
 import CodeEditor from '@/components/editor';
-import Sidebar from '@/components/sidebar';
 import styles from './styles.module.css';
 import ChapterButtons from '@/components/chapter-buttons';
 import CheckButton from '@/components/check-button';

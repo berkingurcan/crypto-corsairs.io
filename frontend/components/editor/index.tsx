@@ -5,8 +5,6 @@ import { DiffEditor, useMonaco, Monaco } from '@monaco-editor/react';
 import styles from './styles.module.css';
 import 'monaco-themes/themes/Blackboard.json';
 
-
-
 function CodeEditor({initial_code, answer_code}: any) {
   const monaco = useMonaco();
   const [userAnswer, setUserAnswer] = useState(initial_code);

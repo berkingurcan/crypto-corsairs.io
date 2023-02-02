@@ -5,7 +5,10 @@ import styles from './styles.module.css';
 import ChapterButtons from '@/components/chapter-buttons';
 import CheckButton from '@/components/check-button';
 
-async function Chapter({course_id, chapter_id, course}: any) {
+async function Chapter({course_id, chapter_id, _course}: any) {
+
+  const course = _course
+
   return (
     <div>
       <div className={styles.mainSection}>

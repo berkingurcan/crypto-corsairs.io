@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react'
+import React, {useState} from 'react'
 import Instructions from '@/components/instructions';
 import CodeEditor from '@/components/editor';
 import styles from './styles.module.css';
@@ -10,6 +10,12 @@ import CheckButton from '@/components/check-button';
 function Chapter({course_id, chapter_id, _course}: any) {
 
   const course = _course
+  const answer_code = course[chapter_id-1].answer_code
+  const [userAnswer, setUserAnswer] = useState(course[chapter_id-1].initial_code);
+
+  const handleClick = () => {
+    console.log(answer_code == userAnswer, "CEE")
+  }
 
   return (
     <div>
@@ -19,11 +25,13 @@ function Chapter({course_id, chapter_id, _course}: any) {
           <CodeEditor 
             initial_code={course[chapter_id-1].initial_code} 
             answer_code={course[chapter_id-1].answer_code}
+            userAnswer={userAnswer}
+            setUserAnswer={setUserAnswer}
           />
         </div>
         <div className={styles.rowButtons}>
           <ChapterButtons course_id={course_id} chapter_id={chapter_id} />
-          <CheckButton  answer={course[chapter_id-1].answer_code}/>
+          <CheckButton onClick={handleClick} answer={course[chapter_id-1].answer_code}/>
         </div>
       </div>
     </div>

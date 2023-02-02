@@ -2,19 +2,20 @@ import Link from 'next/link'
 import React from 'react'
 import styles from './style.module.css'
 
-async function getCourse(id: any) {
-    try {
-        const res = await import(`@/mocks/course-${id}.json`);
-        return res;
-    } catch (error) {
-        console.log(error)
-    }
-}
+async function getData(id: any) {
+  const res = await fetch(process.env.COURSES as string + `course-${id}.json`)
+
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error('Failed to fetch data');
+  }
+
+  return res.json();
+} 
   
 
 async function CourseLanding({course_id}: any) {
-    const DynamicCourse = getCourse(course_id);
-    const [course] = await Promise.all([DynamicCourse])
+    const course = await getData(course_id)
 
   return (
     <div className={styles.landing}>

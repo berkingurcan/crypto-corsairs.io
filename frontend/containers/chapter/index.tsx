@@ -12,9 +12,16 @@ function Chapter({course_id, chapter_id, _course}: any) {
   const course = _course
   const answer_code = course[chapter_id-1].answer_code
   const [userAnswer, setUserAnswer] = useState(course[chapter_id-1].initial_code);
+  const [result, setResult] = useState(false)
+  const [isClicked, setIsClicked] = useState(false)
 
   const handleClick = () => {
-    console.log(answer_code == userAnswer, "CEE")
+    let res = answer_code == userAnswer
+    setResult(res)
+    setIsClicked(true)
+    console.log(isClicked)
+    console.log(result)
+    return(res)
   }
 
   return (
@@ -23,10 +30,13 @@ function Chapter({course_id, chapter_id, _course}: any) {
         <div className={styles.rowWorkplace}>
           <Instructions instructions={course[chapter_id-1].instructions} chapter_title={course[chapter_id-1].title} />
           <CodeEditor 
-            initial_code={course[chapter_id-1].initial_code} 
-            answer_code={course[chapter_id-1].answer_code}
+            initial_code={course[chapter_id-1].initial_code}
+            answer_code={answer_code}
+
             userAnswer={userAnswer}
             setUserAnswer={setUserAnswer}
+            result={result}
+            isClicked={isClicked}
           />
         </div>
         <div className={styles.rowButtons}>

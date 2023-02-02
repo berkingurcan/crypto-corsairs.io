@@ -5,19 +5,7 @@ import styles from './styles.module.css';
 import ChapterButtons from '@/components/chapter-buttons';
 import CheckButton from '@/components/check-button';
 
-async function getCourse(id: any) {
-  try {
-      const res = await import(`@/mocks/course-${id}.json`);
-      return res;
-  } catch (error) {
-      console.log(error)
-  }
-}
-
-async function Chapter({course_id, chapter_id}: any) {
-  const DynamicCourse = getCourse(course_id);
-  const [course] = await Promise.all([DynamicCourse])
-
+async function Chapter({course_id, chapter_id, course}: any) {
   return (
     <div>
       <div className={styles.mainSection}>

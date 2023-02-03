@@ -61,9 +61,11 @@ function Chapter({course_id, chapter_id, _course}: any) {
 
           {
             isClicked && !result ? 
+            
               <div className={styles.falseAnswer}>
                 <ShowButton onClick={showAnswer}/>
-                <TryButton onClick={handleClick} />
+                <TryButton onClick={handleClick}/>
+                <h3>INCORRECT ANSWER MODAL</h3>
               </div>
               : null
           }

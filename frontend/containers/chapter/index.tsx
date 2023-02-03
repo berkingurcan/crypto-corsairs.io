@@ -1,6 +1,6 @@
 'use client';
 
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import Instructions from '@/components/instructions';
 import CodeEditor from '@/components/editor';
 import styles from './styles.module.css';
@@ -8,6 +8,7 @@ import ChapterButtons from '@/components/chapter-buttons';
 import CheckButton from '@/components/check-button';
 import ShowButton from '@/components/show-answer-button';
 import TryButton from '@/components/try-button';
+import MyModal from '@/components/congratulations-modal';
 
 function Chapter({course_id, chapter_id, _course}: any) {
 
@@ -18,23 +19,31 @@ function Chapter({course_id, chapter_id, _course}: any) {
   const [isClicked, setIsClicked] = useState(false)
   const [isShow, setIsShow] = useState(false)
 
+  const [isOpen, setIsOpen] = useState(false)
+
   const handleClick = () => {
     let res = answer_code == userAnswer
     setResult(res)
     setIsClicked(true)
-    console.log(isClicked)
-    console.log(result)
+
+    if (isClicked && result) {
+      setIsOpen(true)
+    }
     return(res)
   }
 
   const showAnswer = () => {
     setIsShow(true)
-    console.log()
   }
 
   return (
     <div>
       <div className={styles.mainSection}>
+      {
+        isClicked && result ? 
+          <MyModal isOpen={isOpen} setIsOpen={setIsOpen} />
+        : null
+      }
         <div className={styles.rowWorkplace}>
           <Instructions instructions={course[chapter_id-1].instructions} chapter_title={course[chapter_id-1].title} />
           <CodeEditor 
@@ -53,10 +62,6 @@ function Chapter({course_id, chapter_id, _course}: any) {
           {
             isClicked && !result ? null
               : <CheckButton onClick={handleClick} answer={course[chapter_id-1].answer_code}/>
-          }
-
-          {
-            isClicked && result ? <h3>CONGRULATIONS GO TO NEXT CHAPTER ADD MODAL</h3> : null
           }
 
           {

@@ -33,6 +33,7 @@ function Chapter({course_id, chapter_id, _course}: any) {
         html:<><h2>CONGRATULATIONS!</h2><Link href={`/course/${course_id}/${chapter_id * 1 + 1}`}><p>Go to Next Chapter</p></Link></>,
         icon: 'success',
         background: 'black',
+        color: 'white',
       })
     }
 

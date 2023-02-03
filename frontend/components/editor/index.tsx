@@ -5,13 +5,8 @@ import { DiffEditor, useMonaco, Monaco } from '@monaco-editor/react';
 import styles from './styles.module.css';
 import 'monaco-themes/themes/Blackboard.json';
 
-function CodeEditor({initial_code, answer_code,userAnswer, setUserAnswer, result, isClicked, isShow}: any) {
+function CodeEditor({initial_code, answer_code, userAnswer, setUserAnswer, result, isClicked, isShow}: any) {
   const monaco = useMonaco();
-  console.log(userAnswer)
-
-  console.log(result);
-  console.log(isClicked)
-
 
   const setMonacoTheme = async () => {
     if (monaco) {
@@ -31,6 +26,8 @@ function CodeEditor({initial_code, answer_code,userAnswer, setUserAnswer, result
     enableSplitViewResizing: false,
 	  renderSideBySide: false
   };
+
+
 
   return (
     <div className={styles.editor}>

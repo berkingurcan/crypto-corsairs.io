@@ -38,12 +38,14 @@ function Chapter({course_id, chapter_id, _course}: any) {
 
   return (
     <div>
+      <div className={styles.modal}>
+          {
+            isClicked && result ? 
+              <MyModal isOpen={isOpen} setIsOpen={setIsOpen} />
+            : null
+          }
+        </div>
       <div className={styles.mainSection}>
-      {
-        isClicked && result ? 
-          <MyModal isOpen={isOpen} setIsOpen={setIsOpen} />
-        : null
-      }
         <div className={styles.rowWorkplace}>
           <Instructions instructions={course[chapter_id-1].instructions} chapter_title={course[chapter_id-1].title} />
           <CodeEditor 

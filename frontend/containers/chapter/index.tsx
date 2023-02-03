@@ -52,13 +52,34 @@ function Chapter({course_id, chapter_id, _course}: any) {
     setIsShow(true)
   }
 
+  // CODE COURSE LOCAL STORAGE PROCESSING
+  useEffect(() => {
+    if (userAnswer == course[chapter_id-1].initial_code) return;
+    localStorage.setItem(`code-course-${course_id}-${chapter_id}`, JSON.stringify(userAnswer))
+    console.log("Setted?")
+  })
+
+  const [storedCode, setStoredCode] = useState('')
+  useEffect(() => {
+    let stored = localStorage.getItem(`code-course-${course_id}-${chapter_id}`)
+    if (stored) {
+      stored = JSON.parse(stored)
+    } else {
+      stored = course[chapter_id-1].initial_code
+    }
+    
+    setStoredCode(stored)
+  }, [course_id, chapter_id])
+
+  // 
+
   return (
     <div>
       <div className={styles.mainSection}>
         <div className={styles.rowWorkplace}>
           <Instructions instructions={course[chapter_id-1].instructions} chapter_title={course[chapter_id-1].title} />
           <CodeEditor 
-            initial_code={course[chapter_id-1].initial_code}
+            initial_code={storedCode == '' ? course[chapter_id-1].initial_code : storedCode}
             answer_code={answer_code}
             userAnswer={userAnswer}
             setUserAnswer={setUserAnswer}

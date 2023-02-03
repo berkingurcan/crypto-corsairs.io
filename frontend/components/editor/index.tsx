@@ -8,10 +8,6 @@ import 'monaco-themes/themes/Blackboard.json';
 function CodeEditor({initial_code, answer_code, userAnswer, setUserAnswer, result, isClicked, isShow}: any) {
   const monaco = useMonaco();
 
-  console.log(userAnswer);
-  console.log(result);
-  console.log(isClicked);
-
   const setMonacoTheme = async () => {
     if (monaco) {
       const data = await import('monaco-themes/themes/Blackboard.json');

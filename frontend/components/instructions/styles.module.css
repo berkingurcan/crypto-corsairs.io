@@ -6,7 +6,8 @@
     height: 73vh;
     width: 100%;
     overflow-y: scroll;
-    border-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
     padding: 14px;
     background: linear-gradient(to right, #050300, #0c1021);
     box-shadow: 1px #4a62cb;

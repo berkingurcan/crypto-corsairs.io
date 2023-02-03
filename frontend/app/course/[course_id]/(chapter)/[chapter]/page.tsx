@@ -14,9 +14,13 @@ async function getData(id: any) {
 
 async function ChapterPage({params}: any) {
   const course = await getData(params.course_id)
+  const chapter = await Promise.all(course.chapters).then((v) => {
+    return v
+  })
+  //console.log(chapter)
   return (
     <div>
-      <Chapter course_id={params.course_id} chapter_id={params.chapter} _course={course} />
+      <Chapter course_id={params.course_id} chapter_id={params.chapter} _course={chapter} />
     </div>
   );
 }

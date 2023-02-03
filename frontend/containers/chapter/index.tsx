@@ -8,7 +8,9 @@ import ChapterButtons from '@/components/chapter-buttons';
 import CheckButton from '@/components/check-button';
 import ShowButton from '@/components/show-answer-button';
 import TryButton from '@/components/try-button';
-import MyModal from '@/components/congratulations-modal';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+import Link from 'next/link';
 
 function Chapter({course_id, chapter_id, _course}: any) {
 
@@ -19,16 +21,29 @@ function Chapter({course_id, chapter_id, _course}: any) {
   const [isClicked, setIsClicked] = useState(false)
   const [isShow, setIsShow] = useState(false)
 
-  const [isOpen, setIsOpen] = useState(false)
+  const MySwal = withReactContent(Swal)
 
   const handleClick = () => {
-    let res = answer_code == userAnswer
+    const res = answer_code == userAnswer
     setResult(res)
     setIsClicked(true)
 
-    if (isClicked && result) {
-      setIsOpen(true)
+    if (res) {
+      MySwal.fire({
+        html:<><h2>CONGRATULATIONS!</h2><Link href={`/course/${course_id}/${chapter_id * 1 + 1}`}><p>Go to Next Chapter</p></Link></>,
+        icon: 'success',
+        background: 'black',
+      })
     }
+
+    else if (!res) {
+      MySwal.fire({
+        html: <><h2>Wrong Answer! Please Check Your Answer</h2></>,
+        background: 'black',
+        icon: 'error',
+      })
+    }
+
     return(res)
   }
 
@@ -38,13 +53,6 @@ function Chapter({course_id, chapter_id, _course}: any) {
 
   return (
     <div>
-      <div className={styles.modal}>
-          {
-            isClicked && result ? 
-              <MyModal isOpen={isOpen} setIsOpen={setIsOpen} />
-            : null
-          }
-        </div>
       <div className={styles.mainSection}>
         <div className={styles.rowWorkplace}>
           <Instructions instructions={course[chapter_id-1].instructions} chapter_title={course[chapter_id-1].title} />
@@ -72,7 +80,6 @@ function Chapter({course_id, chapter_id, _course}: any) {
               <div className={styles.falseAnswer}>
                 <ShowButton onClick={showAnswer}/>
                 <TryButton onClick={handleClick}/>
-                <h3>INCORRECT ANSWER MODAL</h3>
               </div>
               : null
           }

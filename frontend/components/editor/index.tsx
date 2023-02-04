@@ -27,8 +27,6 @@ function CodeEditor({initial_code, answer_code, userAnswer, setUserAnswer, resul
 	  renderSideBySide: false
   };
 
-
-
   return (
     <div className={styles.editor}>
       <Editor

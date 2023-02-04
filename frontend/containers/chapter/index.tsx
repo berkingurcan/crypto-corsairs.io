@@ -35,6 +35,9 @@ function Chapter({course_id, chapter_id, _course}: any) {
         background: 'black',
         color: 'white',
       })
+
+      localStorage.setItem(`code-course-${course_id}-${chapter_id}`, JSON.stringify(userAnswer))
+      localStorage.setItem(`comp-course-${course_id}-${chapter_id}`, JSON.stringify(true))
     }
 
     else if (!res) {
@@ -56,7 +59,6 @@ function Chapter({course_id, chapter_id, _course}: any) {
   useEffect(() => {
     if (userAnswer == course[chapter_id-1].initial_code) return;
     localStorage.setItem(`code-course-${course_id}-${chapter_id}`, JSON.stringify(userAnswer))
-    console.log("Setted?")
   })
 
   const [storedCode, setStoredCode] = useState('')
@@ -64,6 +66,7 @@ function Chapter({course_id, chapter_id, _course}: any) {
     let stored = localStorage.getItem(`code-course-${course_id}-${chapter_id}`)
     if (stored) {
       stored = JSON.parse(stored)
+      setUserAnswer(stored)
     } else {
       stored = course[chapter_id-1].initial_code
     }
@@ -71,7 +74,7 @@ function Chapter({course_id, chapter_id, _course}: any) {
     setStoredCode(stored)
   }, [course_id, chapter_id])
 
-  // 
+  // MMM
 
   return (
     <div>
@@ -81,7 +84,7 @@ function Chapter({course_id, chapter_id, _course}: any) {
           <CodeEditor 
             initial_code={storedCode == '' ? course[chapter_id-1].initial_code : storedCode}
             answer_code={answer_code}
-            userAnswer={userAnswer}
+            userAnswer={storedCode == '' ? userAnswer : storedCode}
             setUserAnswer={setUserAnswer}
             result={result}
             isClicked={isClicked}
@@ -105,7 +108,6 @@ function Chapter({course_id, chapter_id, _course}: any) {
               </div>
               : null
           }
-          
         </div>
       </div>
     </div>

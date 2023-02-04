@@ -3,8 +3,10 @@ import React from 'react'
 import styles from './styles.module.css'
 
 function ChapterButtons({course_id, chapter_id}: any) {
-    const nextChapter = chapter_id*1 + 1;
-    const previousChapter = chapter_id*1 - 1;
+  const nextChapter = chapter_id*1 + 1;
+  let previousChapter = chapter_id*1 - 1;
+  if (previousChapter == 0) previousChapter = 1;
+
   return (
     <div>
       <Link className={styles.backButton} href={`/course/${course_id}/${previousChapter}`}>&#8592; BACK</Link>

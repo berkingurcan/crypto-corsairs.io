@@ -15,7 +15,7 @@ async function getData(id: any) {
   
 
 async function CourseLanding({course_id}: any) {
-    const course = await getData(course_id)
+  const course = await getData(course_id)
 
   return (
     <div className={styles.landing}>

@@ -17,7 +17,7 @@ async function ChapterPage({params}: any) {
   const chapter = await Promise.all(course.chapters).then((v) => {
     return v
   })
-  //console.log(chapter)
+
   return (
     <div>
       <Chapter course_id={params.course_id} chapter_id={params.chapter} _course={chapter} />

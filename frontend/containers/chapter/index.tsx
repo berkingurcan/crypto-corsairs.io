@@ -85,6 +85,7 @@ function Chapter({course_id, chapter_id, _course}: any) {
             initial_code={storedCode == '' ? course[chapter_id-1].initial_code : storedCode}
             answer_code={answer_code}
             userAnswer={storedCode == '' ? userAnswer : storedCode}
+            originalAnswer={userAnswer}
             setUserAnswer={setUserAnswer}
             result={result}
             isClicked={isClicked}

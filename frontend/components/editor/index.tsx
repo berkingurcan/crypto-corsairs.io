@@ -5,7 +5,7 @@ import { DiffEditor, useMonaco, Monaco } from '@monaco-editor/react';
 import styles from './styles.module.css';
 import 'monaco-themes/themes/Blackboard.json';
 
-function CodeEditor({initial_code, answer_code, userAnswer, setUserAnswer, result, isClicked, isShow}: any) {
+function CodeEditor({initial_code, answer_code, userAnswer, setUserAnswer, result, isClicked, isShow, originalAnswer}: any) {
   const monaco = useMonaco();
 
   const setMonacoTheme = async () => {
@@ -45,7 +45,7 @@ function CodeEditor({initial_code, answer_code, userAnswer, setUserAnswer, resul
         language="rust"
         theme="vs-dark"
         modified={isShow ? answer_code : null}
-        original={isShow ? userAnswer : null}
+        original={isShow ? originalAnswer : null}
         options = {options}
       />
     </div>

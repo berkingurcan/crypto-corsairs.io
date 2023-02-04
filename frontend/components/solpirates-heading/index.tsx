@@ -13,6 +13,7 @@ export default function SolpiratesHeading() {
       <div className={styles.actionButtons}>
         <Link className={styles.playButton} href='/course'>COURSES</Link>
       </div>
+
     </div>
   );
 }

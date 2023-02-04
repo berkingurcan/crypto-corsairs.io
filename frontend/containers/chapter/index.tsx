@@ -24,7 +24,7 @@ function Chapter({course_id, chapter_id, _course}: any) {
   const MySwal = withReactContent(Swal)
 
   const handleClick = () => {
-    const res = answer_code == userAnswer
+    const res = answer_code.replace(/\s/g, '') == userAnswer.replace(/\s/g, '')
     setResult(res)
     setIsClicked(true)
 

@@ -1,7 +1,7 @@
 'use client';
 import React, {useEffect, useState} from 'react';
 import Editor from "@monaco-editor/react";
-import { DiffEditor, useMonaco, Monaco } from '@monaco-editor/react';
+import { DiffEditor, useMonaco } from '@monaco-editor/react';
 import styles from './styles.module.css';
 import 'monaco-themes/themes/Blackboard.json';
 import { monaco } from 'react-monaco-editor';

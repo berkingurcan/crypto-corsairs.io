@@ -13,7 +13,6 @@ async function getData(id: any) {
   return res.json();
 } 
   
-
 async function CourseLanding({course_id}: any) {
   const course = await getData(course_id)
 
@@ -41,5 +40,6 @@ async function CourseLanding({course_id}: any) {
     </div>
   )
 }
+
 
 export default CourseLanding

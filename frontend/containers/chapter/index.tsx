@@ -61,7 +61,7 @@ function Chapter({course_id, chapter_id, _course}: any) {
     localStorage.setItem(`code-course-${course_id}-${chapter_id}`, JSON.stringify(userAnswer))
   })
 
-  const [storedCode, setStoredCode] = useState('')
+  const [storedCode, setStoredCode] = useState<any | null>(null)
   useEffect(() => {
     let stored = localStorage.getItem(`code-course-${course_id}-${chapter_id}`)
     if (stored) {

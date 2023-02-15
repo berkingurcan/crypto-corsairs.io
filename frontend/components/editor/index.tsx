@@ -4,6 +4,7 @@ import Editor from "@monaco-editor/react";
 import { DiffEditor, useMonaco, Monaco } from '@monaco-editor/react';
 import styles from './styles.module.css';
 import 'monaco-themes/themes/Blackboard.json';
+import { monaco } from 'react-monaco-editor';
 
 function CodeEditor({initial_code, answer_code, userAnswer, setUserAnswer, result, isClicked, isShow, originalAnswer}: any) {
   const monaco = useMonaco();
@@ -20,7 +21,7 @@ function CodeEditor({initial_code, answer_code, userAnswer, setUserAnswer, resul
     setMonacoTheme();
   }, [monaco]);
 
-  const options: Monaco.IStandaloneEditorConstructionOptions = {
+  const options: monaco.editor.IStandaloneEditorConstructionOptions = {
     readOnly: false,
     minimap: { enabled: false },
     enableSplitViewResizing: false,

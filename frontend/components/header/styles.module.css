@@ -1,5 +1,6 @@
 .header {
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+    font-family: MICROGBE;
   }
   
   .headerWrapper {
@@ -12,10 +13,19 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 700;
-    letter-spacing: -1px;
+    letter-spacing: 2px;
     color: #fafafa;
+  }
+
+  .logoIm {
+    width: 80px;
+    height: 80px;
+  }
+
+  .logo span {
+    color: #CBB34A;
   }
   
   .navigationMenu {

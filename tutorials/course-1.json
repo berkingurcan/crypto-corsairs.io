@@ -1,0 +1,55 @@
+{
+    "id": "1",
+    "title": "Salute Your Crew",
+    "description": "Learn how to log messages in our programs. Also learn how to hold string state in a account.",
+    "introduction_paragraph": "In this course you will greet your crew as a captain of pirate ship! Creating simple anchor program, logging messages and creating account and holding simple values in accounts.",
+    "chapters": [
+      {
+        "id": "1",
+        "title": "Getting started",
+        "task_description": "",
+        "instructions": [
+          {
+            "text": "Hi captain! First things first. In this course ",
+            "code_block": ""
+          },
+          {
+            "text": "",
+            "code_block": ""
+          }
+        ],
+        "initial_code": "",
+        "answer_code": ""
+      },
+      {
+        "id": "",
+        "title": "",
+        "task_description": "",
+        "instructions": [
+          {
+            "text": "",
+            "code_block": ""
+          },
+          {
+            "text": "",
+            "code_block": ""
+          }
+        ],
+        "initial_code": "",
+        "answer_code": ""
+      },
+      {
+        "id": "",
+        "title": "",
+        "task_description": "",
+        "instructions": [
+          {
+            "text": "",
+            "code_block": ""
+          }
+        ],
+        "initial_code": "",
+        "answer_code": ""
+      }
+    ]
+}

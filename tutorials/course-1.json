@@ -1,8 +1,8 @@
 {
     "id": "1",
     "title": "Salute Your Crew",
-    "description": "Learn how to log messages in our programs. Also learn how to hold string state in a account.",
-    "introduction_paragraph": "In this course you will greet your crew as a captain of pirate ship! Creating simple anchor program, logging messages and creating account and holding simple values in accounts.",
+    "description": "Learn how to log messages in our onchain programs.",
+    "introduction_paragraph": "In this course you will greet your crew as a captain of pirate ship! Creating simple anchor program which logging messages.",
     "chapters": [
       {
         "id": "1",
@@ -10,46 +10,78 @@
         "task_description": "",
         "instructions": [
           {
-            "text": "Hi captain! First things first. In this course ",
+            "text": "Hi captain! First things first. You are the captain of pirate sloop with a good crew and great advanture is waiting for you!. You know that as a captain of the crew when you come on deck, you must greet your crew. In this course, you need to greet your crew by onchain logging by saying \"Ahoy There!\".",
             "code_block": ""
           },
           {
-            "text": "",
-            "code_block": ""
-          }
-        ],
-        "initial_code": "",
-        "answer_code": ""
-      },
-      {
-        "id": "",
-        "title": "",
-        "task_description": "",
-        "instructions": [
+            "text": "In solana programs, you can simply use `msg!()` macro for onchain logging messages like below:",
+            "code_block": "msg!(\"Hello world, from solana smart contract\");\n"
+          },
           {
-            "text": "",
+            "text": "In order to do that we must first import the anchor module below.",
+            "code_block": "anchor_lang::prelude::*"
+          },
+          {
+            "text": "In the context of the Anchor framework for Solana blockchain development, `anchor_lang::prelude::*` is a module that provides a set of commonly used types, traits, and functions that are frequently used in Anchor programs.",
             "code_block": ""
           },
           {
-            "text": "",
+            "text": "And, in this chapter your first task is importing anchor module :) when you import the module click to check answer please ;)",
             "code_block": ""
           }
         ],
         "initial_code": "",
-        "answer_code": ""
+        "answer_code": "use anchor_lang::prelude::*;"
       },
       {
-        "id": "",
-        "title": "",
+        "id": "2",
+        "title": "WTF is the declare_id!() ???",
         "task_description": "",
         "instructions": [
           {
-            "text": "",
+            "text": "`declare_id!` is a macro provided by the Anchor framework for Solana blockchain development that is used to declare a program's ID.",
+            "code_block": ""
+          },
+          {
+            "text": "Basically, when we build anchor program, it creates program id before the deployment. And we take this unique id and replace with initial id before the program deployment.",
+            "code_block": ""
+          },
+          {
+            "text": "For now, please copy and paste this code to below the current code",
+            "code_block": "declare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");"
+          }
+        ],
+        "initial_code": "use anchor_lang::prelude::*;",
+        "answer_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");"
+      },
+      {
+        "id": "3",
+        "title": "The Program Module",
+        "task_description": "",
+        "instructions": [
+          {
+            "text": "You define your business logic in the program module. You accomplish this by creating functions that can be called by clients or other programs. For example in the code below 'hello_world' function simply logs \"Hello world, from solana smart contract\" message.",
+            "code_block": "#[program]\npub mod hello_world {\n    use super::*;\n    pub fn hello_world(_ctx: Context<Initialize>) -> Result<()> {\n        Ok(())\n    }\n}"
+          },
+          {
+            "text": "The other example is like that:",
+            "code_block": "#[program]\nmod hello_anchor {\n    use super::*;\n    pub fn set_data(ctx: Context<SetData>, data: u64) -> Result<()> {\n        if ctx.accounts.token_account.amount > 0 {\n            ctx.accounts.my_account.data = data;\n        }\n        Ok(())\n    }\n}"
+          },
+          {
+            "text": "Now we have a program module as you can see in the right side. We created a program module named ahoy_there",
+            "code_block": ""
+          },
+          {
+            "text": "And please create a function named `ahoy_there` which takes `ctx: Context<Initialize>` as a parameter. Waiit! What is ctx, Context and Initialize???",
+            "code_block": "ahoy_there(ctx: Context<Initialize>)"
+          },
+          {
+            "text": "No worry! We will cover them in next chapters! Just pass it :)",
             "code_block": ""
           }
         ],
-        "initial_code": "",
-        "answer_code": ""
+        "initial_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod ahoy_there {\n    use super::*;\n\n}",
+        "answer_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod ahoy_there {\n    use super::*;\n\n    pub fn ahoy_there(ctx: Context<Initialize>) -> Result<()> {\n        \n    }\n}"
       }
     ]
 }

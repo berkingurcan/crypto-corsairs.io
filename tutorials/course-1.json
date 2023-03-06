@@ -11,7 +11,7 @@
         "instructions": [
           {
             "text": "Hi captain! First things first. You are the captain of pirate sloop with a good crew and great advanture is waiting for you!. You know that as a captain of the crew when you come on deck, you must greet your crew. In this course, you need to greet your crew by onchain logging by saying \"Ahoy There!\".",
-            "code_block": ""
+            "code_block": null
           },
           {
             "text": "In solana programs, you can simply use `msg!()` macro for onchain logging messages like below:",
@@ -23,11 +23,11 @@
           },
           {
             "text": "In the context of the Anchor framework for Solana blockchain development, `anchor_lang::prelude::*` is a module that provides a set of commonly used types, traits, and functions that are frequently used in Anchor programs.",
-            "code_block": ""
+            "code_block": null
           },
           {
             "text": "And, in this chapter your first task is importing anchor module :) when you import the module click to check answer please ;)",
-            "code_block": ""
+            "code_block": null
           }
         ],
         "initial_code": "",
@@ -40,11 +40,11 @@
         "instructions": [
           {
             "text": "`declare_id!` is a macro provided by the Anchor framework for Solana blockchain development that is used to declare a program's ID.",
-            "code_block": ""
+            "code_block": null
           },
           {
             "text": "Basically, when we build anchor program, it creates program id before the deployment. And we take this unique id and replace with initial id before the program deployment.",
-            "code_block": ""
+            "code_block": null
           },
           {
             "text": "For now, please copy and paste this code to below the current code",
@@ -69,19 +69,73 @@
           },
           {
             "text": "Now we have a program module as you can see in the right side. We created a program module named ahoy_there",
-            "code_block": ""
+            "code_block": null
           },
           {
             "text": "And please create a function named `ahoy_there` which takes `ctx: Context<Initialize>` as a parameter. Waiit! What is ctx, Context and Initialize???",
             "code_block": "ahoy_there(ctx: Context<Initialize>)"
           },
           {
-            "text": "No worry! We will cover them in next chapters! Just pass it :)",
+            "text": "No worry! We will cover them in next chapters! Just pass it :) Also, if you stuck somewhere do not hesitate to click show answer button.",
             "code_block": ""
           }
         ],
         "initial_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod ahoy_there {\n    use super::*;\n\n}",
         "answer_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod ahoy_there {\n    use super::*;\n\n    pub fn ahoy_there(ctx: Context<Initialize>) -> Result<()> {\n        \n    }\n}"
+      },
+      {
+        "id": "4",
+        "title": "Ahoy There!",
+        "task_description": "",
+        "instructions": [
+          {
+            "text": "As the sun sets on the horizon, you stand tall on the deck of your sloop, a fierce and feared pirate captain. The wind whips through your hair and the salt spray stings your face, but you stand unflinching, a true master of the sea.",
+            "code_block": ""
+          },
+          {
+            "text": "You turn to face your crew, a ragtag group of cutthroats and thieves, but they look up to you with a fierce loyalty. \"Ahoy there, me hearties!\" you bellow, your voice carrying over the crashing waves. \n You know your next task log your message!",
+            "code_block": "Ahoy there, me hearties!"
+          },
+          {
+            "text": "Then return `Ok(())` as a `Result<()>`",
+            "code_block": "Ok(())"
+          },
+          {
+            "text": "Wait!!! You forgot again what is Context???",
+            "code_block": "msg!(\"Wait for next chapters Captain \");"
+          }
+        ],
+        "initial_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod ahoy_there {\n    use super::*;\n\n    pub fn ahoy_there(ctx: Context<Initialize>) -> Result<()> {\n        \n    }\n}",
+        "answer_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod ahoy_there {\n    use super::*;\n\n    pub fn ahoy_there(ctx: Context<Initialize>) -> Result<()> {\n        msg!(\"Ahoy there, me hearties!\");\n        Ok(())\n    }\n}"
+      },
+      {
+        "id": "5",
+        "title": "The Accounts Struct & Account",
+        "task_description": "",
+        "instructions": [
+          {
+            "text": " \"A pirate must always account for their actions, for the seas will not forget.\"",
+            "code_block": ""
+          },
+          {
+            "text": "Important! Account and Accounts Struct are different things!!! \n In Solana, an account refers to a single instance of data storage on the blockchain, identified by a unique address. For example:",
+            "code_block": "#[account]\n# [derive(Default)]\npub struct MyAccount {\n    data: u64\n}"
+          },
+          {
+            "text": "Account in Solana is the basic unit of data storage on the Solana blockchain. Each account has a unique address, which is derived from the public key of the account's owner. Account can store different types of data, such as token balances, program code, and program state.",
+            "code_block": ""
+          },
+          {
+            "text": "",
+            "code_block": ""
+          },
+          {
+            "text": "",
+            "code_block": ""
+          }
+        ],
+        "initial_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod ahoy_there {\n    use super::*;\n\n    pub fn ahoy_there(ctx: Context<Initialize>) -> Result<()> {\n        msg!(\"Ahoy there, me hearties!\");\n        Ok(())\n    }\n}",
+        "answer_code": ""
       }
     ]
 }

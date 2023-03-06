@@ -1,0 +1,221 @@
+{
+    "id": "1",
+    "title": "Salute Your Crew",
+    "description": "Learn how to log messages in our onchain programs.",
+    "introduction_paragraph": "In this course you will greet your crew as a captain of pirate ship! Creating simple anchor program which logging messages.",
+    "chapters": [
+      {
+        "id": "1",
+        "title": "Getting started",
+        "task_description": "",
+        "instructions": [
+          {
+            "text": "Hi captain! First things first. You are the captain of pirate sloop with a good crew and great advanture is waiting for you! You know that as a captain of the crew when you come on deck, you must greet your crew. In this course, you need to greet your crew by onchain logging by saying \"Ahoy There!\".",
+            "code_block": null
+          },
+          {
+            "text": "In solana programs, you can simply use `msg!()` macro for onchain logging messages like below:",
+            "code_block": "msg!(\"Hello world, from solana smart contract\");\n"
+          },
+          {
+            "text": "In order to do that we must first import the anchor module below.",
+            "code_block": "anchor_lang::prelude::*"
+          },
+          {
+            "text": "In the context of the Anchor framework for Solana blockchain development, `anchor_lang::prelude::*` is a module that provides a set of commonly used types, traits, and functions that are frequently used in Anchor programs.",
+            "code_block": null
+          },
+          {
+            "text": "And, in this chapter your first task is importing anchor module :) when you import the module click to check answer please ;)",
+            "code_block": null
+          }
+        ],
+        "initial_code": "",
+        "answer_code": "use anchor_lang::prelude::*;"
+      },
+      {
+        "id": "2",
+        "title": "WTF is the declare_id!() ???",
+        "task_description": "",
+        "instructions": [
+          {
+            "text": "`declare_id!` is a macro provided by the Anchor framework for Solana blockchain development that is used to declare a program's ID.",
+            "code_block": null
+          },
+          {
+            "text": "Basically, when we build anchor program, it creates program id before the deployment. And we take this unique id and replace with initial id before the program deployment.",
+            "code_block": null
+          },
+          {
+            "text": "For now, please copy and paste this code to below the current code",
+            "code_block": "declare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");"
+          }
+        ],
+        "initial_code": "use anchor_lang::prelude::*;",
+        "answer_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");"
+      },
+      {
+        "id": "3",
+        "title": "The Program Module",
+        "task_description": "",
+        "instructions": [
+          {
+            "text": "You define your business logic in the program module. You accomplish this by creating functions that can be called by clients or other programs. For example in the code below 'hello_world' function simply logs \"Hello world, from solana smart contract\" message.",
+            "code_block": "#[program]\npub mod hello_world {\n    use super::*;\n    pub fn hello_world(_ctx: Context<Initialize>) -> Result<()> {\n        Ok(())\n    }\n}"
+          },
+          {
+            "text": "The other example is like that:",
+            "code_block": "#[program]\nmod hello_anchor {\n    use super::*;\n    pub fn set_data(ctx: Context<SetData>, data: u64) -> Result<()> {\n        if ctx.accounts.token_account.amount > 0 {\n            ctx.accounts.my_account.data = data;\n        }\n        Ok(())\n    }\n}"
+          },
+          {
+            "text": "Now we have a program module as you can see in the right side. We created a program module named ahoy_there",
+            "code_block": null
+          },
+          {
+            "text": "And please create a function named `ahoy_there` which takes `ctx: Context<Initialize>` as a parameter. Waiit! What is ctx, Context and Initialize???",
+            "code_block": "ahoy_there(ctx: Context<Initialize>)"
+          },
+          {
+            "text": "No worry! We will cover them in next chapters! Just pass it :) Also, if you stuck somewhere do not hesitate to click show answer button.",
+            "code_block": null
+          }
+        ],
+        "initial_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod ahoy_there {\n    use super::*;\n\n}",
+        "answer_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod ahoy_there {\n    use super::*;\n\n    pub fn ahoy_there(ctx: Context<Initialize>) -> Result<()> {\n        \n    }\n}"
+      },
+      {
+        "id": "4",
+        "title": "Ahoy There!",
+        "task_description": "",
+        "instructions": [
+          {
+            "text": "As the sun sets on the horizon, you stand tall on the deck of your sloop, a fierce and feared pirate captain. The wind whips through your hair and the salt spray stings your face, but you stand unflinching, a true master of the sea.",
+            "code_block": null
+          },
+          {
+            "text": "You turn to face your crew, a ragtag group of cutthroats and thieves, but they look up to you with a fierce loyalty. \"Ahoy there, me hearties!\" you bellow, your voice carrying over the crashing waves. \n You know your next task log your message!",
+            "code_block": "Ahoy there, me hearties!"
+          },
+          {
+            "text": "Then return `Ok(())` as a `Result<()>`",
+            "code_block": "Ok(())"
+          },
+          {
+            "text": "Wait!!! You forgot again what is Context???",
+            "code_block": "msg!(\"Wait for next chapters Captain \");"
+          }
+        ],
+        "initial_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod ahoy_there {\n    use super::*;\n\n    pub fn ahoy_there(ctx: Context<Initialize>) -> Result<()> {\n        \n    }\n}",
+        "answer_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod ahoy_there {\n    use super::*;\n\n    pub fn ahoy_there(ctx: Context<Initialize>) -> Result<()> {\n        msg!(\"Ahoy there, me hearties!\");\n        Ok(())\n    }\n}"
+      },
+      {
+        "id": "5",
+        "title": "The Accounts Struct & Account",
+        "task_description": "",
+        "instructions": [
+          {
+            "text": " \"A pirate must always account for their actions, for the seas will not forget.\"",
+            "code_block": null
+          },
+          {
+            "text": "Important! Account and Accounts Struct are different things!!! \n In Solana, an account refers to a single instance of data storage on the blockchain, identified by a unique address. For example:",
+            "code_block": "#[account]\n#[derive(Default)]\npub struct MyAccount {\n    data: u64\n}"
+          },
+          {
+            "text": "On the other hand, accounts refers to a collection of accounts that a program needs to interact with during a particular transaction on the Solana blockchain. A program can interact with multiple accounts at once, and the accounts keyword is used to define a struct that specifies the accounts needed for a particular operation.",
+            "code_block": null
+          },
+          {
+            "text": "#[derive(Accounts)] attribute is used to specify a struct that defines a collection of accounts that a program needs to interact with. For example we use accounts for the account above MyAccount",
+            "code_block": "#[derive(Accounts)]\npub struct SetData<'info> {\n    #[account(mut)]\n    pub my_account: Account<'info, MyAccount>\n}"
+          },
+          {
+            "text": "We will cover accounts again later. Also you will learn about PDA's. But for now, we don't hold any state in our program. We are just logging message to chain. Got it? For now, we just adding this Initialize struct for using context below our code. Please copy and paste it to your code :)",
+            "code_block": "#[derive(Accounts)]\npub struct Initialize<> {}"
+          },
+          {
+            "text": "As you can see we use context accounts struct as a parameter in order to use accounts. In further chapters we will see detailed usage of it.",
+            "code_block": null
+          }
+        ],
+        "initial_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod ahoy_there {\n    use super::*;\n\n    pub fn ahoy_there(ctx: Context<Initialize>) -> Result<()> {\n        msg!(\"Ahoy there, me hearties!\");\n        Ok(())\n    }\n}",
+        "answer_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod ahoy_there {\n    use super::*;\n\n    pub fn ahoy_there(ctx: Context<Initialize>) -> Result<()> {\n        msg!(\"Ahoy there, me hearties!\");\n        Ok(())\n    }\n}\n\n#[derive(Accounts)]\npub struct Initialize<> {}"
+      },
+      {
+        "id": "6",
+        "title": "So far so good",
+        "task_description": "",
+        "instructions": [
+          {
+            "text": "Yes captain! You have already greet your crew! Congratulations! However, your mission for this course is not done :) Now suppose that, you want to hold your current number of pirate in your crew with this program :)",
+            "code_block": null
+          },
+          {
+            "text": "Firstly, we will create an account struct for this number like this. Please write it to below your program mod and above your",
+            "code_block": "#[account]\n#[derive(Default)]\npub struct NumberAccount {\n    number_of_crew: u64\n}"
+          },
+          {
+            "text": "This code defines a struct NumberAccount with one field, number_of_crew, which is an unsigned 64-bit integer. The #[account] attribute indicates that this struct is an account, which means that it will be stored on-chain as a Solana account. The #[derive(Default)] attribute provides a default implementation for the struct, which initializes number_of_crew to 0 when a new instance of NumberAccount is created. When you are ready go to next chapter :)",
+            "code_block": null
+          }
+        ],
+        "initial_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod ahoy_there {\n    use super::*;\n\n    pub fn ahoy_there(ctx: Context<Initialize>) -> Result<()> {\n        msg!(\"Ahoy there, me hearties!\");\n        Ok(())\n    }\n}\n\n#[derive(Accounts)]\npub struct Initialize<> {}",
+        "answer_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod ahoy_there {\n    use super::*;\n\n    pub fn ahoy_there(ctx: Context<Initialize>) -> Result<()> {\n        msg!(\"Ahoy there, me hearties!\");\n        Ok(())\n    }\n}\n\n#[derive(Accounts)]\npub struct Initialize<> {} \n#[account]\n#[derive(Default)]\npub struct NumberAccount {\n    number_of_crew: u64\n}"
+      },
+      {
+        "id": "7",
+        "title": "Initialize",
+        "task_description": "",
+        "instructions": [
+          {
+            "text": "Now, add accounts struct to these code in order to connect your account to Context ;)",
+            "code_block": "#[derive(Accounts)]\npub struct Initialize<'info> {\n    #[account(mut)]\n    pub number_account: Account<'info, NumberAccount>\n}"
+          },
+          {
+            "text": "This code defines a struct Initialize<'info> that is used to initialize a NumberAccount. The #[derive(Accounts)] attribute is used to generate an implementation of the Accounts trait for the struct, which is used to ensure that all of the required accounts are present before the function is executed. The #[account(mut)] attribute is used to indicate that the number_account field is a mutable account, which means that it can be modified by the program. Finally, the Account type is parameterized with 'info, which indicates that the lifetime of the account is tied to the lifetime of the program context.",
+            "code_block": null
+          }
+        ],
+        "initial_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod ahoy_there {\n    use super::*;\n\n    pub fn ahoy_there(ctx: Context<Initialize>) -> Result<()> {\n        msg!(\"Ahoy there, me hearties!\");\n        Ok(())\n    }\n}\n\n#[derive(Accounts)]\npub struct Initialize<> {} \n#[account]\n#[derive(Default)]\npub struct NumberAccount {\n    number_of_crew: u64\n}",
+        "answer_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod ahoy_there {\n    use super::*;\n\n    pub fn ahoy_there(ctx: Context<Initialize>) -> Result<()> {\n        msg!(\"Ahoy there, me hearties!\");\n        Ok(())\n    }\n}\n\n#[derive(Accounts)]\npub struct Initialize<> {} \n#[account]\n#[derive(Default)]\npub struct NumberAccount {\n    number_of_crew: u64\n}\n#[derive(Accounts)]\npub struct Initialize<'info> {\n    #[account(mut)]\n    pub number_account: Account<'info, NumberAccount>\n}"
+      },
+      {
+        "id": "8",
+        "title": "Function",
+        "task_description": "",
+        "instructions": [
+          {
+            "text": "Now captain, you have created your account structs and just one step left. Add your function to `number_of_crew` as a parameter.",
+            "code_block": "number_of_crew: u64"
+          },
+          {
+            "text": "Then use this parameter to assign account data like this ;)",
+            "code_block": "ctx.accounts.number_account.number_of_crew = number_of_crew;"
+          }
+        ],
+        "initial_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod ahoy_there {\n    use super::*;\n\n    pub fn ahoy_there(ctx: Context<Initialize>) -> Result<()> {\n        msg!(\"Ahoy there, me hearties!\");\n        Ok(())\n    }\n}\n\n#[derive(Accounts)]\npub struct Initialize<> {} \n#[account]\n#[derive(Default)]\npub struct NumberAccount {\n    number_of_crew: u64\n}\n#[derive(Accounts)]\npub struct Initialize<'info> {\n    #[account(mut)]\n    pub number_account: Account<'info, NumberAccount>\n}",
+        "answer_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod ahoy_there {\n    use super::*;\n\n    pub fn ahoy_there(ctx: Context<Initialize>, number_of_crew: u64) -> Result<()> {\n        ctx.accounts.number_account.number_of_crew = number_of_crew;\n        msg!(\"Ahoy there, me hearties!\");\n        Ok(())\n    }\n}\n\n#[account]\n#[derive(Default)]\npub struct NumberAccount {\n    number_of_crew: u64\n}\n\n#[derive(Accounts)]\npub struct Initialize<'info> {\n    #[account(mut)]\n    pub number_account: Account<'info, NumberAccount>\n}"
+      },
+      {
+        "id": "9",
+        "title": "Congratulation Captain!",
+        "task_description": "",
+        "instructions": [
+          {
+            "text": "Now you can see your great code here :)",
+            "code_block": null
+          },
+          {
+            "text": "This code defines a program called ahoy_there that initializes a NumberAccount with the given number_of_crew. The program is defined using the #[program] attribute, and the function ahoy_there is marked with the pub keyword so that it can be called from other modules. The Initialize struct is used to specify the accounts required to run the program. It contains a single field, number_account, which is a mutable account of type NumberAccount. The NumberAccount struct is also defined in this code, and it contains a single field number_of_crew, which is an unsigned 64-bit integer. Finally, the program logic is implemented in the ahoy_there function. This function takes a Context object and a u64 as input parameters. It modifies the number_of_crew field of the number_account account to the given value, and then prints a message to the console using the msg! macro. The function returns an Ok result, indicating that the program has executed successfully.",
+            "code_block": null
+          },
+          {
+            "text": "YOU ARE DONE CAPTAIN GO TO NEXT COURSE!",
+            "code_block": null
+          }
+        ],
+        "initial_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod ahoy_there {\n    use super::*;\n\n    pub fn ahoy_there(ctx: Context<Initialize>, number_of_crew: u64) -> Result<()> {\n        ctx.accounts.number_account.number_of_crew = number_of_crew;\n        msg!(\"Ahoy there, me hearties!\");\n        Ok(())\n    }\n}\n\n#[account]\n#[derive(Default)]\npub struct NumberAccount {\n    number_of_crew: u64\n}\n\n#[derive(Accounts)]\npub struct Initialize<'info> {\n    #[account(mut)]\n    pub number_account: Account<'info, NumberAccount>\n}",
+        "answer_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod ahoy_there {\n    use super::*;\n\n    pub fn ahoy_there(ctx: Context<Initialize>, number_of_crew: u64) -> Result<()> {\n        ctx.accounts.number_account.number_of_crew = number_of_crew;\n        msg!(\"Ahoy there, me hearties!\");\n        Ok(())\n    }\n}\n\n#[account]\n#[derive(Default)]\npub struct NumberAccount {\n    number_of_crew: u64\n}\n\n#[derive(Accounts)]\npub struct Initialize<'info> {\n    #[account(mut)]\n    pub number_account: Account<'info, NumberAccount>\n}"
+      }
+    ]
+}

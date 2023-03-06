@@ -122,20 +122,24 @@
             "code_block": "#[account]\n#[derive(Default)]\npub struct MyAccount {\n    data: u64\n}"
           },
           {
-            "text": "Account in Solana is the basic unit of data storage on the Solana blockchain. Each account has a unique address, which is derived from the public key of the account's owner. Account can store different types of data, such as token balances, program code, and program state. Another example:",
-            "code_block": null
-          },
-          {
             "text": "On the other hand, accounts refers to a collection of accounts that a program needs to interact with during a particular transaction on the Solana blockchain. A program can interact with multiple accounts at once, and the accounts keyword is used to define a struct that specifies the accounts needed for a particular operation.",
             "code_block": null
           },
           {
             "text": "#[derive(Accounts)] attribute is used to specify a struct that defines a collection of accounts that a program needs to interact with. For example we use accounts for the account above MyAccount",
-            "code_block": ""
+            "code_block": "#[derive(Accounts)]\npub struct SetData<'info> {\n    #[account(mut)]\n    pub my_account: Account<'info, MyAccount>\n}"
+          },
+          {
+            "text": "We will cover accounts again later. Also you will learn about PDA's. But for now, we don't hold any state in our program. We are just logging message to chain. Got it? For now, we just adding this Initialize struct for using context.",
+            "code_block": "#[derive(Accounts)]\npub struct Initialize<> {}"
+          },
+          {
+            "text": "As you can see we use context accounts struct as a parameter in order to use accounts. In further chapters we will see detailed usage of it.",
+            "code_block": null
           }
         ],
         "initial_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod ahoy_there {\n    use super::*;\n\n    pub fn ahoy_there(ctx: Context<Initialize>) -> Result<()> {\n        msg!(\"Ahoy there, me hearties!\");\n        Ok(())\n    }\n}",
-        "answer_code": ""
+        "answer_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod ahoy_there {\n    use super::*;\n\n    pub fn ahoy_there(ctx: Context<Initialize>) -> Result<()> {\n        msg!(\"Ahoy there, me hearties!\");\n        Ok(())\n    }\n}\n\n#[derive(Accounts)]\npub struct Initialize<> {}"
       }
     ]
 }

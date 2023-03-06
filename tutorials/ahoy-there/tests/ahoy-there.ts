@@ -7,13 +7,10 @@ describe("ahoy-there", () => {
   anchor.setProvider(anchor.AnchorProvider.env());
 
   const program = anchor.workspace.AhoyThere as Program<AhoyThere>;
-  console.log(program)
 
   it("Is initialized!", async () => {
     // Add your test here.
-
-    const tx = await program.methods.ahoyThere().
-    rpc();
+    const tx = await program.methods.initialize().rpc();
     console.log("Your transaction signature", tx);
   });
 });

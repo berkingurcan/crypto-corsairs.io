@@ -122,15 +122,15 @@
             "code_block": "#[account]\n#[derive(Default)]\npub struct MyAccount {\n    data: u64\n}"
           },
           {
-            "text": "Account in Solana is the basic unit of data storage on the Solana blockchain. Each account has a unique address, which is derived from the public key of the account's owner. Account can store different types of data, such as token balances, program code, and program state.",
-            "code_block": ""
+            "text": "Account in Solana is the basic unit of data storage on the Solana blockchain. Each account has a unique address, which is derived from the public key of the account's owner. Account can store different types of data, such as token balances, program code, and program state. Another example:",
+            "code_block": null
           },
           {
-            "text": "",
-            "code_block": ""
+            "text": "On the other hand, accounts refers to a collection of accounts that a program needs to interact with during a particular transaction on the Solana blockchain. A program can interact with multiple accounts at once, and the accounts keyword is used to define a struct that specifies the accounts needed for a particular operation.",
+            "code_block": null
           },
           {
-            "text": "",
+            "text": "#[derive(Accounts)] attribute is used to specify a struct that defines a collection of accounts that a program needs to interact with. For example we use accounts for the account above MyAccount",
             "code_block": ""
           }
         ],

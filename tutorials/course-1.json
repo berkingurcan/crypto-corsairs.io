@@ -177,7 +177,7 @@
           }
         ],
         "initial_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod ahoy_there {\n    use super::*;\n\n    pub fn ahoy_there(ctx: Context<Initialize>) -> Result<()> {\n        msg!(\"Ahoy there, me hearties!\");\n        Ok(())\n    }\n}\n\n#[derive(Accounts)]\npub struct Initialize<> {} \n \n#[account]\n#[derive(Default)]\npub struct NumberAccount {\n    number_of_crew: u64\n}",
-        "answer_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod ahoy_there {\n    use super::*;\n\n    pub fn ahoy_there(ctx: Context<Initialize>) -> Result<()> {\n        msg!(\"Ahoy there, me hearties!\");\n        Ok(())\n    }\n}\n\n#[derive(Accounts)]\n \n#[derive(Accounts)]\npub struct Initialize<'info> {\n    #[account(mut)]\n    pub number_account: Account<'info, NumberAccount>\n} \n#[account]\n#[derive(Default)]\npub struct NumberAccount {\n    number_of_crew: u64\n}\n"
+        "answer_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod ahoy_there {\n    use super::*;\n\n    pub fn ahoy_there(ctx: Context<Initialize>) -> Result<()> {\n        msg!(\"Ahoy there, me hearties!\");\n        Ok(())\n    }\n}\n \n#[derive(Accounts)]\npub struct Initialize<'info> {\n    #[account(mut)]\n    pub number_account: Account<'info, NumberAccount>\n} \n#[account]\n#[derive(Default)]\npub struct NumberAccount {\n    number_of_crew: u64\n}\n"
       },
       {
         "id": "8",
@@ -193,7 +193,7 @@
             "code_block": "ctx.accounts.number_account.number_of_crew = number_of_crew;"
           }
         ],
-        "initial_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod ahoy_there {\n    use super::*;\n\n    pub fn ahoy_there(ctx: Context<Initialize>) -> Result<()> {\n        msg!(\"Ahoy there, me hearties!\");\n        Ok(())\n    }\n}\n \n#[account]\n#[derive(Default)]\npub struct NumberAccount {\n    number_of_crew: u64\n}\n#[derive(Accounts)]\npub struct Initialize<'info> {\n    #[account(mut)]\n    pub number_account: Account<'info, NumberAccount>\n}",
+        "initial_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod ahoy_there {\n    use super::*;\n\n    pub fn ahoy_there(ctx: Context<Initialize>) -> Result<()> {\n        msg!(\"Ahoy there, me hearties!\");\n        Ok(())\n    }\n}\n \n#[account]\n#[derive(Default)]\npub struct NumberAccount {\n    number_of_crew: u64\n}\n\n#[derive(Accounts)]\npub struct Initialize<'info> {\n    #[account(mut)]\n    pub number_account: Account<'info, NumberAccount>\n}",
         "answer_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod ahoy_there {\n    use super::*;\n\n    pub fn ahoy_there(ctx: Context<Initialize>, number_of_crew: u64) -> Result<()> {\n        ctx.accounts.number_account.number_of_crew = number_of_crew;\n        msg!(\"Ahoy there, me hearties!\");\n        Ok(())\n    }\n}\n\n#[account]\n#[derive(Default)]\npub struct NumberAccount {\n    number_of_crew: u64\n}\n\n#[derive(Accounts)]\npub struct Initialize<'info> {\n    #[account(mut)]\n    pub number_account: Account<'info, NumberAccount>\n}"
       },
       {

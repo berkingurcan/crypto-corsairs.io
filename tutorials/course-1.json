@@ -147,11 +147,11 @@
         "task_description": "",
         "instructions": [
           {
-            "text": "Yes captain! You have already greet your crew! Congratulations! However, your mission for this course is not done :) Now suppose that, you want to hold your current number of pirate in your crew with this program :)",
+            "text": "Yes captain! You have already saluted your crew! Congratulations! However, your mission for this course is not done :) Now suppose that, you want to hold your current number of pirate in your crew with this program :)",
             "code_block": null
           },
           {
-            "text": "Firstly, we will create an account struct for this number like this. Please write it to below your program mod and above your",
+            "text": "Firstly, we will create an account struct for this number like this. Please write it to below your program mod and above your Initialize struct.",
             "code_block": "#[account]\n#[derive(Default)]\npub struct NumberAccount {\n    number_of_crew: u64\n}"
           },
           {
@@ -160,7 +160,7 @@
           }
         ],
         "initial_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod ahoy_there {\n    use super::*;\n\n    pub fn ahoy_there(ctx: Context<Initialize>) -> Result<()> {\n        msg!(\"Ahoy there, me hearties!\");\n        Ok(())\n    }\n}\n\n#[derive(Accounts)]\npub struct Initialize<> {}",
-        "answer_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod ahoy_there {\n    use super::*;\n\n    pub fn ahoy_there(ctx: Context<Initialize>) -> Result<()> {\n        msg!(\"Ahoy there, me hearties!\");\n        Ok(())\n    }\n}\n\n#[derive(Accounts)]\npub struct Initialize<> {} \n#[account]\n#[derive(Default)]\npub struct NumberAccount {\n    number_of_crew: u64\n}"
+        "answer_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod ahoy_there {\n    use super::*;\n\n    pub fn ahoy_there(ctx: Context<Initialize>) -> Result<()> {\n        msg!(\"Ahoy there, me hearties!\");\n        Ok(())\n    }\n}\n\n#[account]\n#[derive(Default)]\npub struct NumberAccount {\n    number_of_crew: u64\n}#[derive(Accounts)]\npub struct Initialize<> {} \n"
       },
       {
         "id": "7",

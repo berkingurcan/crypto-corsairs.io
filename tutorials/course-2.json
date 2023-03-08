@@ -1,0 +1,55 @@
+{
+    "id": "",
+    "title": "",
+    "description": "",
+    "introduction_paragraph": "",
+    "chapters": [
+      {
+        "id": "",
+        "title": "",
+        "task_description": "",
+        "instructions": [
+          {
+            "text": "",
+            "code_block": ""
+          },
+          {
+            "text": "",
+            "code_block": ""
+          }
+        ],
+        "initial_code": "",
+        "answer_code": ""
+      },
+      {
+        "id": "",
+        "title": "",
+        "task_description": "",
+        "instructions": [
+          {
+            "text": "",
+            "code_block": ""
+          },
+          {
+            "text": "",
+            "code_block": ""
+          }
+        ],
+        "initial_code": "",
+        "answer_code": ""
+      },
+      {
+        "id": "",
+        "title": "",
+        "task_description": "",
+        "instructions": [
+          {
+            "text": "",
+            "code_block": ""
+          }
+        ],
+        "initial_code": "",
+        "answer_code": ""
+      }
+    ]
+}

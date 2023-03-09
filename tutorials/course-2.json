@@ -1,55 +1,147 @@
 {
-    "id": "",
-    "title": "",
-    "description": "",
-    "introduction_paragraph": "",
+    "id": "2",
+    "title": "Count Your Number of Crew",
+    "description": "Learn how to initialize and update Accounts",
+    "introduction_paragraph": "In this course you will count your number of crew. Also you will learn how to update your number of crew when a new member join your crew or leave from your crew. The long and the short of it, you will learn account operations.",
     "chapters": [
       {
-        "id": "",
-        "title": "",
+        "id": "1",
+        "title": "Course 2 Overview",
         "task_description": "",
         "instructions": [
           {
-            "text": "",
-            "code_block": ""
+            "text": "Ahoy there! As the waves crash against the wooden hull and the salty sea breeze whips through your hair, there's nothing quite like the thrill of sailing the high seas as a pirate captain. But amidst the chaos and adventure, it's important not to forget the basics - like keeping track of your crew. Your ship relies on your crew members to work together and keep everyone safe on their journey. Counting the number of crew members you have is important to make sure everyone is accounted for and that you have enough people to handle any challenges that may come your way.",
+            "code_block": null
           },
           {
-            "text": "",
-            "code_block": ""
+            "text": "So, in this course you'll learn how to create an on-chain counter program. This program will allow you to initialize, increase and decrease the number of crew in order to keep track of a certain number of your pirate crew.",
+            "code_block": null
+          },
+          {
+            "text": "If you are ready let's go to next chapter!",
+            "code_block": null
           }
         ],
         "initial_code": "",
         "answer_code": ""
       },
       {
-        "id": "",
-        "title": "",
+        "id": "2",
+        "title": "Program Structure",
         "task_description": "",
         "instructions": [
           {
-            "text": "",
-            "code_block": ""
+            "text": "Like most of the basic anchor program we will have three section in this program:",
+            "code_block": "1) Program Mod which has 3 instruction(function): \n - initialize \n - increment \n - decrement \n 2) 2 Accounts context:\n - Initialize \n - Update \n 3) 1 Crew account which holds number of crew "
           },
           {
-            "text": "",
-            "code_block": ""
+            "text": "As you can see, you will have an account which holds your number of crew and you will use 3 function to initialize the account, increase the number, decrease the number. Also you will have 2 Context to connect your instructions(functions) to your Crew account.",
+            "code_block": null
+          },
+          {
+            "text": "If you are ready, lets create a initialize instruction which pass context Initialize like this:",
+            "code_block": "initialize(ctx: Context<Initialize>)"
+          },
+          {
+            "text": "And please return Ok(()) as Result<()>",
+            "code_block": null
+          },
+          {
+            "text": "Then, as you can guess please create an empty Initialize struct below the mod",
+            "code_block": "#[derive(Accounts)]\npub struct Initialize<'info> {\n    \n}"
+          },
+          {
+            "text": "If you are done lets go to next chapter",
+            "code_block": null
           }
         ],
-        "initial_code": "",
-        "answer_code": ""
+        "initial_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod crew_counter {\n    use super::*;\n    \n}",
+        "answer_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod crew_counter {\n    use super::*;\n\n    pub fn initialize(ctx: Context<Initialize>) -> Result<()> {\n        Ok(())\n    }\n}\n\n#[derive(Accounts)]\npub struct Initialize<'info> {\n    \n}"
       },
       {
-        "id": "",
-        "title": "",
+        "id": "3",
+        "title": "Add Crew Account",
         "task_description": "",
         "instructions": [
           {
-            "text": "",
-            "code_block": ""
+            "text": "Now you have just one task! Create a account struct below the Initialize Context which name is `Crew`. Also it should hold the number of crew as u64 like below:",
+            "code_block": "pub number_of_crew: u64,"
           }
         ],
-        "initial_code": "",
-        "answer_code": ""
+        "initial_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod crew_counter {\n    use super::*;\n\n    pub fn initialize(ctx: Context<Initialize>) -> Result<()> {\n        Ok(())\n    }\n}\n\n#[derive(Accounts)]\npub struct Initialize<'info> {\n    \n}",
+        "answer_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod crew_counter {\n    use super::*;\n\n    pub fn initialize(ctx: Context<Initialize>) -> Result<()> {\n        Ok(())\n    }\n}\n\n#[derive(Accounts)]\npub struct Initialize<'info> {\n    \n}\n\n#[account]\npub struct Crew {\n    pub number_of_crew: u64,\n}"
+      },
+      {
+        "id": "4",
+        "title": "Initialize Context",
+        "task_description": "",
+        "instructions": [
+          {
+            "text": "Now we will fill the Initialize context according to our needs :) First we will assign the Crew account to `crew` field.",
+            "code_block": "#[account(init, payer = user, space = 8 + 8)]\npub crew: Account<'info, Crew>"
+          },
+          {
+            "text": "The Initialize struct is used to initialize a new instance of the Crew account buuut WTF these are???? init, payer, space???????? \nThese means that when the program is run, a new account will be created and initialized with default values(init). The account creation will be paid for by the user account(payer). The account will be able to store two 8-byte integers (64 bits each).(space) This annotation specifies that the account needs to be able to store two u64s, which take up 8 bytes each, plus any account metadata that Solana requires.",
+            "code_block": null
+          },
+          {
+            "text": "Now, we have user which is signer of the context :) also it is payer as you can see above. Add this code also inside your Initialize context:",
+            "code_block": "#[account(mut)]\npub user: Signer<'info>,"
+          },
+          {
+            "text": "But wait! What are `<'info>` ??? <'info> is a lifetime parameter that is used in Solana programs to indicate that the program has access to information about the current state of the network. It is a way to ensure that the program is executed correctly.",
+            "code_block": null
+          },
+          {
+            "text": "Lastly we will add this code below user field. It indicates the system_program is a reference to a built-in program in the Solana blockchain that provides basic functionality, like creating new accounts and processing transactions. It is included as a read-only account in the Initialize struct, but it is not directly used by the crew_counter program.",
+            "code_block": "pub system_program: Program<'info, System>,"
+          },
+          {
+            "text": "If you writes these three field to your context, Lets go to next chapter!",
+            "code_block": null
+          }
+        ],
+        "initial_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod crew_counter {\n    use super::*;\n\n    pub fn initialize(ctx: Context<Initialize>) -> Result<()> {\n        Ok(())\n    }\n}\n\n#[derive(Accounts)]\npub struct Initialize<'info> {\n    \n}\n\n#[account]\npub struct Crew {\n    pub number_of_crew: u64,\n}",
+        "answer_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod crew_counter {\n    use super::*;\n\n    pub fn initialize(ctx: Context<Initialize>) -> Result<()> {\n        Ok(())\n    }\n}\n\n#[derive(Accounts)]\npub struct Initialize<'info> {\n    #[account(init, payer = user, space = 8 + 8)]\n    pub crew: Account<'info, Crew>,\n    #[account(mut)]\n    pub user: Signer<'info>,\n    pub system_program: Program<'info, System>,\n}\n\n#[account]\npub struct Crew {\n    pub number_of_crew: u64,\n}\n"
+      },
+      {
+        "id": "5",
+        "title": "Use the context in the instruction",
+        "task_description": "",
+        "instructions": [
+          {
+            "text": "Now, you have just only one task and I will not give a clue OK??? Take your crew account from Context like this and assign its number_of_crew field to 0",
+            "code_block": "let crew = &mut ctx.accounts.crew;"
+          }
+        ],
+        "initial_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod crew_counter {\n    use super::*;\n\n    pub fn initialize(ctx: Context<Initialize>) -> Result<()> {\n        Ok(())\n    }\n}\n\n#[derive(Accounts)]\npub struct Initialize<'info> {\n    #[account(init, payer = user, space = 8 + 8)]\n    pub crew: Account<'info, Crew>,\n    #[account(mut)]\n    pub user: Signer<'info>,\n    pub system_program: Program<'info, System>,\n}\n\n#[account]\npub struct Crew {\n    pub number_of_crew: u64,\n}\n",
+        "answer_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod crew_counter {\n    use super::*;\n\n    pub fn initialize(ctx: Context<Initialize>) -> Result<()> {\n        let crew = &mut ctx.accounts.crew;\n        crew.number_of_crew = 0;\n        Ok(())\n    }\n}\n\n#[derive(Accounts)]\npub struct Initialize<'info> {\n    #[account(init, payer = user, space = 8 + 8)]\n    pub crew: Account<'info, Crew>,\n    #[account(mut)]\n    pub user: Signer<'info>,\n    pub system_program: Program<'info, System>,\n}\n\n#[account]\npub struct Crew {\n    pub number_of_crew: u64,\n}\n"
+      },
+      {
+        "id": "6",
+        "title": "Update Context",
+        "task_description": "",
+        "instructions": [
+          {
+            "text": "Yes Captain! You have created Initialize instruction and context struct with Crew account succesfully! Now, as you can see I have created two instruction for you: increment and decrement. Before the complete them you should create an Update context which takes 2 field:",
+            "code_block": "#[account(mut)]\npub crew: Account<'info, Crew>,\npub user: Signer<'info>,"
+          }
+        ],
+        "initial_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\\\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\\\");\n\n#[program]\npub mod crew_counter {\n    use super::*;\n\n    pub fn initialize(ctx: Context<Initialize>) -> Result<()> {\n        let crew = &mut ctx.accounts.crew;\n        crew.number_of_crew = 0;\n        Ok(())\n    }\n\n    pub fn increment(ctx: Context<Update>) -> Result<()> {\n        Ok(())\n    }\n\n    pub fn decrement(ctx: Context<Update>) -> Result<()> {\n        Ok(())\n    }\n}\n\n#[derive(Accounts)]\npub struct Initialize<'info> {\n    #[account(init, payer = user, space = 8 + 8)]\n    pub crew: Account<'info, Crew>,\n    #[account(mut)]\n    pub user: Signer<'info>,\n    pub system_program: Program<'info, System>,\n}\n\n#[account]\npub struct Crew {\n    pub number_of_crew: u64,\n}",
+        "answer_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod crew_counter {\n    use super::*;\n\n    pub fn initialize(ctx: Context<Initialize>) -> Result<()> {\n        let crew = &mut ctx.accounts.crew;\n        crew.number_of_crew = 0;\n        Ok(())\n    }\n\n    pub fn increment(ctx: Context<Update>) -> Result<()> {\n        Ok(())\n    }\n\n    pub fn decrement(ctx: Context<Update>) -> Result<()> {\n        Ok(())\n    }\n}\n\n#[derive(Accounts)]\npub struct Initialize<'info> {\n    #[account(init, payer = user, space = 8 + 8)]\n    pub crew: Account<'info, Crew>,\n    #[account(mut)]\n    pub user: Signer<'info>,\n    pub system_program: Program<'info, System>,\n}\n\n#[derive(Accounts)]\npub struct Update<'info> {\n    #[account(mut)]\n    pub crew: Account<'info, Crew>,\n    pub user: Signer<'info>,\n}\n\n#[account]\npub struct Crew {\n    pub number_of_crew: u64,\n}"
+      },
+      {
+        "id": "7",
+        "title": "Finish it!",
+        "task_description": "",
+        "instructions": [
+          {
+            "text": "Say no more! Complete instructions by incrementing +1 and decrementing -1",
+            "code_block": "crew.number_of_crew = crew.number_of_crew + 1;"
+          }
+        ],
+        "initial_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod crew_counter {\n    use super::*;\n\n    pub fn initialize(ctx: Context<Initialize>) -> Result<()> {\n        let crew = &mut ctx.accounts.crew;\n        crew.number_of_crew = 0;\n        Ok(())\n    }\n\n    pub fn increment(ctx: Context<Update>) -> Result<()> {\n        Ok(())\n    }\n\n    pub fn decrement(ctx: Context<Update>) -> Result<()> {\n        Ok(())\n    }\n}\n\n#[derive(Accounts)]\npub struct Initialize<'info> {\n    #[account(init, payer = user, space = 8 + 8)]\n    pub crew: Account<'info, Crew>,\n    #[account(mut)]\n    pub user: Signer<'info>,\n    pub system_program: Program<'info, System>,\n}\n\n#[derive(Accounts)]\npub struct Update<'info> {\n    #[account(mut)]\n    pub crew: Account<'info, Crew>,\n    pub user: Signer<'info>,\n}\n\n#[account]\npub struct Crew {\n    pub number_of_crew: u64,\n}",
+        "answer_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod crew_counter {\n    use super::*;\n\n    pub fn initialize(ctx: Context<Initialize>) -> Result<()> {\n        let crew = &mut ctx.accounts.crew;\n        crew.number_of_crew = 0;\n        Ok(())\n    }\n\n    pub fn increment(ctx: Context<Update>) -> Result<()> {\n        let crew = &mut ctx.accounts.crew;\n        crew.number_of_crew = crew.number_of_crew + 1;\n        Ok(())\n    }\n\n    pub fn decrement(ctx: Context<Update>) -> Result<()> {\n        let crew = &mut ctx.accounts.crew;\n        crew.number_of_crew = crew.number_of_crew - 1;\n        Ok(())\n    }\n}\n\n#[derive(Accounts)]\npub struct Initialize<'info> {\n    #[account(init, payer = user, space = 8 + 8)]\n    pub crew: Account<'info, Crew>,\n    #[account(mut)]\n    pub user: Signer<'info>,\n    pub system_program: Program<'info, System>,\n}\n\n#[derive(Accounts)]\npub struct Update<'info> {\n    #[account(mut)]\n    pub crew: Account<'info, Crew>,\n    pub user: Signer<'info>,\n}\n\n#[account]\npub struct Crew {\n    pub number_of_crew: u64,\n}"
       }
     ]
 }

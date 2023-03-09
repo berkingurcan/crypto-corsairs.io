@@ -138,10 +138,39 @@
           {
             "text": "Say no more! Complete instructions by incrementing +1 and decrementing -1",
             "code_block": "crew.number_of_crew = crew.number_of_crew + 1;"
+          },
+          {
+            "text": "Complete it and go to next chapter because WE ARE NOT DONE YET!",
+            "code_block": null
           }
         ],
         "initial_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod crew_counter {\n    use super::*;\n\n    pub fn initialize(ctx: Context<Initialize>) -> Result<()> {\n        let crew = &mut ctx.accounts.crew;\n        crew.number_of_crew = 0;\n        Ok(())\n    }\n\n    pub fn increment(ctx: Context<Update>) -> Result<()> {\n        Ok(())\n    }\n\n    pub fn decrement(ctx: Context<Update>) -> Result<()> {\n        Ok(())\n    }\n}\n\n#[derive(Accounts)]\npub struct Initialize<'info> {\n    #[account(init, payer = user, space = 8 + 8)]\n    pub crew: Account<'info, Crew>,\n    #[account(mut)]\n    pub user: Signer<'info>,\n    pub system_program: Program<'info, System>,\n}\n\n#[derive(Accounts)]\npub struct Update<'info> {\n    #[account(mut)]\n    pub crew: Account<'info, Crew>,\n    pub user: Signer<'info>,\n}\n\n#[account]\npub struct Crew {\n    pub number_of_crew: u64,\n}",
         "answer_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod crew_counter {\n    use super::*;\n\n    pub fn initialize(ctx: Context<Initialize>) -> Result<()> {\n        let crew = &mut ctx.accounts.crew;\n        crew.number_of_crew = 0;\n        Ok(())\n    }\n\n    pub fn increment(ctx: Context<Update>) -> Result<()> {\n        let crew = &mut ctx.accounts.crew;\n        crew.number_of_crew = crew.number_of_crew + 1;\n        Ok(())\n    }\n\n    pub fn decrement(ctx: Context<Update>) -> Result<()> {\n        let crew = &mut ctx.accounts.crew;\n        crew.number_of_crew = crew.number_of_crew - 1;\n        Ok(())\n    }\n}\n\n#[derive(Accounts)]\npub struct Initialize<'info> {\n    #[account(init, payer = user, space = 8 + 8)]\n    pub crew: Account<'info, Crew>,\n    #[account(mut)]\n    pub user: Signer<'info>,\n    pub system_program: Program<'info, System>,\n}\n\n#[derive(Accounts)]\npub struct Update<'info> {\n    #[account(mut)]\n    pub crew: Account<'info, Crew>,\n    pub user: Signer<'info>,\n}\n\n#[account]\npub struct Crew {\n    pub number_of_crew: u64,\n}"
+      },
+      {
+        "id": "8",
+        "title": "Further Works",
+        "task_description": "",
+        "instructions": [
+          {
+            "text": "The sea roared and churned beneath the pirate ship, as the salty air whipped through the sails. The Pirate Captain stood on the deck, his eyes fixed on the endless horizon. He had spent hours counting his crew, one by one, as the waves crashed against the hull.",
+            "code_block": null
+          },
+          {
+            "text": "You see captain, counting one by one is so exhausting :) Your next task is adding features to your program below:",
+            "code_block": "- While initializing Crew account you should be able to number of crew to arbitrary number instead of 0. JUST LIKE COURSE 1\n - While both increasing and decreasing your number of crew you should be able to also arbitrary value."
+          },
+          {
+            "text": "While implementing these features please use this variable as u64 in the three instructions by passing parameter:",
+            "code_block": "value: u64"
+          },
+          {
+            "text": "If you stuck in this task feel free to look answer by clicking SHOW ANSWER :)",
+            "code_block": null
+          }
+        ],
+        "initial_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod crew_counter {\n    use super::*;\n\n    pub fn initialize(ctx: Context<Initialize>) -> Result<()> {\n        let crew = &mut ctx.accounts.crew;\n        crew.number_of_crew = 0;\n        Ok(())\n    }\n\n    pub fn increment(ctx: Context<Update>) -> Result<()> {\n        let crew = &mut ctx.accounts.crew;\n        crew.number_of_crew = crew.number_of_crew + 1;\n        Ok(())\n    }\n\n    pub fn decrement(ctx: Context<Update>) -> Result<()> {\n        let crew = &mut ctx.accounts.crew;\n        crew.number_of_crew = crew.number_of_crew - 1;\n        Ok(())\n    }\n}\n\n#[derive(Accounts)]\npub struct Initialize<'info> {\n    #[account(init, payer = user, space = 8 + 8)]\n    pub crew: Account<'info, Crew>,\n    #[account(mut)]\n    pub user: Signer<'info>,\n    pub system_program: Program<'info, System>,\n}\n\n#[derive(Accounts)]\npub struct Update<'info> {\n    #[account(mut)]\n    pub crew: Account<'info, Crew>,\n    pub user: Signer<'info>,\n}\n\n#[account]\npub struct Crew {\n    pub number_of_crew: u64,\n}",
+        "answer_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod crew_counter {\n    use super::*;\n\n    pub fn initialize(ctx: Context<Initialize>, value: u64) -> Result<()> {\n        let crew = &mut ctx.accounts.crew;\n        crew.number_of_crew = value;\n        Ok(())\n    }\n\n    pub fn increment(ctx: Context<Update>, value: u64) -> Result<()> {\n        let crew = &mut ctx.accounts.crew;\n        crew.number_of_crew = crew.number_of_crew + value;\n        Ok(())\n    }\n\n    pub fn decrement(ctx: Context<Update>, value: u64) -> Result<()> {\n        let crew = &mut ctx.accounts.crew;\n        crew.number_of_crew = crew.number_of_crew - value;\n        Ok(())\n    }\n}\n\n#[derive(Accounts)]\npub struct Initialize<'info> {\n    #[account(init, payer = user, space = 8 + 8)]\n    pub crew: Account<'info, Crew>,\n    #[account(mut)]\n    pub user: Signer<'info>,\n    pub system_program: Program<'info, System>,\n}\n\n#[derive(Accounts)]\npub struct Update<'info> {\n    #[account(mut)]\n    pub crew: Account<'info, Crew>,\n    pub user: Signer<'info>,\n}\n\n#[account]\npub struct Crew {\n    pub number_of_crew: u64,\n}"
       }
     ]
 }

@@ -86,20 +86,58 @@
           }
         ],
         "initial_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod pirate_voting {\n    use super::*;\n\n    pub fn init_vote_account(ctx: Context<InitVoteAccount>) -> Result<()> {\n        Ok(())\n    }\n}\n\n#[derive(Accounts)]\npub struct InitVoteAccount<'info> {\n    #[account(\n        init, \n        payer = signer, \n        space = 8 + 1 + 8 + 8 + 8, \n    )] \n    pub vote_account: Account<'info, VoteAccount>,\n    #[account(mut)]\n    pub signer: Signer<'info>,\n    pub system_program: Program<'info, System>,\n}\n\n#[account]\n#[derive(Default)]\npub struct VoteAccount {\n    is_open_to_vote: bool,\n    pattaya: u64,\n    phuket: u64,\n    krabi: u64,\n}",
-        "answer_code": ""
+        "answer_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod pirate_voting {\n    use super::*;\n\n    pub fn init_vote_account(ctx: Context<InitVoteAccount>) -> Result<()> {\n        ctx.accounts.vote_account.is_open_to_vote = true;\n        ctx.accounts.vote_account.pattaya = 0;\n        ctx.accounts.vote_account.phuket = 0;\n        ctx.accounts.vote_account.krabi = 0;\n        Ok(())\n    }\n}\n\n#[derive(Accounts)]\npub struct InitVoteAccount<'info> {\n    #[account(\n        init, \n        payer = signer, \n        space = 8 + 1 + 8 + 8 + 8, \n    )] \n    pub vote_account: Account<'info, VoteAccount>,\n    #[account(mut)]\n    pub signer: Signer<'info>,\n    pub system_program: Program<'info, System>,\n}\n\n#[account]\n#[derive(Default)]\npub struct VoteAccount {\n    is_open_to_vote: bool,\n    pattaya: u64,\n    phuket: u64,\n    krabi: u64,\n}"
       },
       {
-        "id": "",
-        "title": "",
+        "id": "5",
+        "title": "Vote instruction",
         "task_description": "",
         "instructions": [
           {
-            "text": "",
-            "code_block": ""
+            "text": "So far so good captain :) let's take a break and refill your coffe :) Before the start this task it is better to take a look at pattern matching via the match keyword and Enums in Rust if you don't know",
+            "code_block": null
+          },
+          {
+            "text": "Now, let's create an instruction which pass the parameters Vote context and vote_type",
+            "code_block": "vote(ctx: Context<Vote>, vote_type: VoteType)"
+          },
+          {
+            "text": "Hmm we have VoteType which is actually enum",
+            "code_block": "#[derive(AnchorSerialize, AnchorDeserialize)]\npub enum VoteType {\n    PATTAYA,\n    PHUKET,\n    KRABI\n}"
+          },
+          {
+            "text": "VoteType enum is annotated with AnchorSerialize and AnchorDeserialize, indicating that it can be serialized and deserialized using the Anchor framework captain. This means that instances of the VoteType enum can be converted into a binary format that can be stored on the Solana blockchain and then later retrieved from the blockchain and converted back into an instance of the VoteType enum. Then copy and paste it bottom of your code.",
+            "code_block": null
           }
         ],
-        "initial_code": "",
-        "answer_code": ""
+        "initial_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod pirate_voting {\n    use super::*;\n\n    pub fn init_vote_account(ctx: Context<InitVoteAccount>) -> Result<()> {\n        ctx.accounts.vote_account.is_open_to_vote = true;\n        ctx.accounts.vote_account.pattaya = 0;\n        ctx.accounts.vote_account.phuket = 0;\n        ctx.accounts.vote_account.krabi = 0;\n        Ok(())\n    }\n}\n\n#[derive(Accounts)]\npub struct InitVoteAccount<'info> {\n    #[account(\n        init, \n        payer = signer, \n        space = 8 + 1 + 8 + 8 + 8, \n    )] \n    pub vote_account: Account<'info, VoteAccount>,\n    #[account(mut)]\n    pub signer: Signer<'info>,\n    pub system_program: Program<'info, System>,\n}\n\n#[account]\n#[derive(Default)]\npub struct VoteAccount {\n    is_open_to_vote: bool,\n    pattaya: u64,\n    phuket: u64,\n    krabi: u64,\n}",
+        "answer_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod pirate_voting {\n    use super::*;\n\n    pub fn init_vote_account(ctx: Context<InitVoteAccount>) -> Result<()> {\n        ctx.accounts.vote_account.is_open_to_vote = true;\n        ctx.accounts.vote_account.pattaya = 0;\n        ctx.accounts.vote_account.phuket = 0;\n        ctx.accounts.vote_account.krabi = 0;\n        \n        Ok(())\n    }\n\n    pub fn vote(ctx: Context<Vote>, vote_type: VoteType) -> Result<()> {\n        Ok(())\n    }\n}\n\n#[derive(Accounts)]\npub struct InitVoteAccount<'info> {\n    #[account(\n        init, \n        payer = signer, \n        space = 8 + 1 + 8 + 8 + 8, \n    )] \n    pub vote_account: Account<'info, VoteAccount>,\n    #[account(mut)]\n    pub signer: Signer<'info>,\n    pub system_program: Program<'info, System>,\n}\n\n#[account]\n#[derive(Default)]\npub struct VoteAccount {\n    is_open_to_vote: bool,\n    pattaya: u64,\n    phuket: u64,\n    krabi: u64,\n}\n\n#[derive(AnchorSerialize, AnchorDeserialize)]\npub enum VoteType {\n    PATTAYA,\n    PHUKET,\n    KRABI\n}"
+      },
+      {
+        "id": "6",
+        "title": "Add Vote Context",
+        "task_description": "",
+        "instructions": [
+          {
+            "text": "Add the vote context to the just below initialize context",
+            "code_block": "#[derive(Accounts)]\npub struct Vote<'info> {\n    #[account(mut)] \n    pub vote_account: Account<'info, VoteAccount>,\n    pub signer: Signer<'info>,\n}"
+          }
+        ],
+        "initial_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod pirate_voting {\n    use super::*;\n\n    pub fn init_vote_account(ctx: Context<InitVoteAccount>) -> Result<()> {\n        ctx.accounts.vote_account.is_open_to_vote = true;\n        ctx.accounts.vote_account.pattaya = 0;\n        ctx.accounts.vote_account.phuket = 0;\n        ctx.accounts.vote_account.krabi = 0;\n        \n        Ok(())\n    }\n\n    pub fn vote(ctx: Context<Vote>, vote_type: VoteType) -> Result<()> {\n        Ok(())\n    }\n}\n\n#[derive(Accounts)]\npub struct InitVoteAccount<'info> {\n    #[account(\n        init, \n        payer = signer, \n        space = 8 + 1 + 8 + 8 + 8, \n    )] \n    pub vote_account: Account<'info, VoteAccount>,\n    #[account(mut)]\n    pub signer: Signer<'info>,\n    pub system_program: Program<'info, System>,\n}\n\n#[account]\n#[derive(Default)]\npub struct VoteAccount {\n    is_open_to_vote: bool,\n    pattaya: u64,\n    phuket: u64,\n    krabi: u64,\n}\n\n#[derive(AnchorSerialize, AnchorDeserialize)]\npub enum VoteType {\n    PATTAYA,\n    PHUKET,\n    KRABI\n}",
+        "answer_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod pirate_voting {\n    use super::*;\n\n    pub fn init_vote_account(ctx: Context<InitVoteAccount>) -> Result<()> {\n        ctx.accounts.vote_account.is_open_to_vote = true;\n        ctx.accounts.vote_account.pattaya = 0;\n        ctx.accounts.vote_account.phuket = 0;\n        ctx.accounts.vote_account.krabi = 0;\n        \n        Ok(())\n    }\n\n    pub fn vote(ctx: Context<Vote>, vote_type: VoteType) -> Result<()> {\n        Ok(())\n    }\n}\n\n#[derive(Accounts)]\npub struct InitVoteAccount<'info> {\n    #[account(init, payer = signer, space = 8 + 1 + 8 + 8 + 8)] \n    pub vote_account: Account<'info, VoteAccount>,\n    #[account(mut)]\n    pub signer: Signer<'info>,\n    pub system_program: Program<'info, System>,\n}\n\n#[derive(Accounts)]\npub struct Vote<'info> {\n    #[account(mut)]\n    pub vote_account: Account<'info, VoteAccount>,\n    pub signer: Signer<'info>,\n}\n\n#[account]\n#[derive(Default)]\npub struct VoteAccount {\n    is_open_to_vote: bool,\n    pattaya: u64,\n    phuket: u64,\n    krabi: u64,\n}\n\n#[derive(AnchorSerialize, AnchorDeserialize)]\npub enum VoteType {\n    PATTAYA,\n    PHUKET,\n    KRABI\n}"
+      },
+      {
+        "id": "7",
+        "title": "Vote Instruction",
+        "task_description": "",
+        "instructions": [
+          {
+            "text": "Captain congratulations you are almost done! Now, you should match the vote_type according to the input and increment 1 its related vote counts. Here is and different example:",
+            "code_block": "match vote_type {\n    VoteType::YES => {\n        ctx.accounts.vote_account.yes += 1;\n    },\n    VoteType::NO => {\n        ctx.accounts.vote_account.no += 1;\n    },\n}"
+          }
+        ],
+        "initial_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod pirate_voting {\n    use super::*;\n\n    pub fn init_vote_account(ctx: Context<InitVoteAccount>) -> Result<()> {\n        ctx.accounts.vote_account.is_open_to_vote = true;\n        ctx.accounts.vote_account.pattaya = 0;\n        ctx.accounts.vote_account.phuket = 0;\n        ctx.accounts.vote_account.krabi = 0;\n        \n        Ok(())\n    }\n\n    pub fn vote(ctx: Context<Vote>, vote_type: VoteType) -> Result<()> {\n        Ok(())\n    }\n}\n\n#[derive(Accounts)]\npub struct InitVoteAccount<'info> {\n    #[account(init, payer = signer, space = 8 + 1 + 8 + 8 + 8)] \n    pub vote_account: Account<'info, VoteAccount>,\n    #[account(mut)]\n    pub signer: Signer<'info>,\n    pub system_program: Program<'info, System>,\n}\n\n#[derive(Accounts)]\npub struct Vote<'info> {\n    #[account(mut)]\n    pub vote_account: Account<'info, VoteAccount>,\n    pub signer: Signer<'info>,\n}\n\n#[account]\n#[derive(Default)]\npub struct VoteAccount {\n    is_open_to_vote: bool,\n    pattaya: u64,\n    phuket: u64,\n    krabi: u64,\n}\n\n#[derive(AnchorSerialize, AnchorDeserialize)]\npub enum VoteType {\n    PATTAYA,\n    PHUKET,\n    KRABI\n}",
+        "answer_code": "use anchor_lang::prelude::*;\n\ndeclare_id!(\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\");\n\n#[program]\npub mod pirate_voting {\n    use super::*;\n\n    pub fn init_vote_account(ctx: Context<InitVoteAccount>) -> Result<()> {\n        ctx.accounts.vote_account.is_open_to_vote = true;\n        ctx.accounts.vote_account.pattaya = 0;\n        ctx.accounts.vote_account.phuket = 0;\n        ctx.accounts.vote_account.krabi = 0;\n\n        Ok(())\n    }\n\n    pub fn vote(ctx: Context<Vote>, vote_type: VoteType) -> Result<()> {\n        match vote_type {\n            VoteType::PATTAYA => {\n                ctx.accounts.vote_account.pattaya += 1;\n            }\n            VoteType::PHUKET => {\n                ctx.accounts.vote_account.phuket += 1;\n            }\n            VoteType::KRABI => {\n                ctx.accounts.vote_account.krabi += 1;\n            }\n        };\n        Ok(())\n    }\n}\n\n#[derive(Accounts)]\npub struct InitVoteAccount<'info> {\n    #[account(\n        init, \n        payer = signer, \n        space = 8 + 1 + 8 + 8 + 8, \n    )]\n    pub vote_account: Account<'info, VoteAccount>,\n    #[account(mut)]\n    pub signer: Signer<'info>,\n    pub system_program: Program<'info, System>,\n}\n\n#[derive(Accounts)]\npub struct Vote<'info> {\n    #[account(mut)]\n    pub vote_account: Account<'info, VoteAccount>,\n    pub signer: Signer<'info>,\n}\n\n#[account]\n#[derive(Default)]\npub struct VoteAccount {\n    is_open_to_vote: bool,\n    pattaya: u64,\n    phuket: u64,\n    krabi: u64,\n}\n\n#[derive(AnchorSerialize, AnchorDeserialize)]\npub enum VoteType {\n    PATTAYA,\n    PHUKET,\n    KRABI,\n}"
       }
     ]
 }

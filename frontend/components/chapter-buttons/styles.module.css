@@ -1,34 +1,21 @@
-.nextButton {
-    padding:0.35em 1.2em;
-    border:0.1em solid #FFFFFF;
-    margin:0 0.3em 0.3em 0;
-    border-radius:0.12em;
-    box-sizing: border-box;
-    text-decoration:none;
-    font-weight:300;
-    color:#FFFFFF;
-    text-align:center;
-    transition: all 0.2s;
-}
-.nextButton:hover{
-    color:#000000;
-    background-color:#FFFFFF;
-}
 
-.backButton{
-    padding:0.35em 1.2em;
-    border:0.1em solid #FFFFFF;
-    margin:0 0.3em 0.3em 0;
-    border-radius:0.12em;
+.playButton {
+    display: inline-block;
+    padding: 0.5em 1.5em;
+    border: 0.1em solid #ffffff;
+    margin: 0.1 0.3em 0.3em 0;
+    border-radius: 0.25em;
     box-sizing: border-box;
-    text-decoration:none;
-    font-weight:300;
-    color:#FFFFFF;
-    text-align:center;
+    text-decoration: none;
+    font-weight: 600;
+    color: #ffffff;
+    text-align: center;
     transition: all 0.2s;
-}
+  }
+  
+  .playButton:hover {
+    color: white;
+    background-color: #CBB34A;
+    border: 0.1em solid black;
 
-.backButton:hover{
-    color:#000000;
-    background-color:#FFFFFF;
-}
+  }

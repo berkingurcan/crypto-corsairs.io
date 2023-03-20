@@ -1,5 +1,6 @@
 import React from 'react';
 import Chapter from '@/containers/chapter';
+import Congrats from '@/containers/congrats';
 
 async function getData(id: any) {
   const res = await fetch(process.env.COURSES as string + `course-${id}.json`)
@@ -18,10 +19,18 @@ async function ChapterPage({params}: any) {
     return v
   })
 
+  const courseLength = course.chapters.length;
+  const ourId = params.chapter
+
   return (
-    <div>
-      <Chapter course_id={params.course_id} chapter_id={params.chapter} _course={chapter} />
-    </div>
+    <>
+    {
+      ourId <= courseLength ? 
+      <div>
+        <Chapter course_id={params.course_id} chapter_id={params.chapter} _course={chapter} />
+      </div> : <Congrats course_id={params.course_id} />
+    }
+    </>
   );
 }
 

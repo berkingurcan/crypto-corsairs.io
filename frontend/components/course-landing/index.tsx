@@ -19,26 +19,30 @@ async function CourseLanding({course_id}: any) {
   return (
     <div className={styles.landing}>
       <h1 className={styles.courseTitleLanding}>{course.title}</h1>
-      <p className={styles.courseIntro}>{course.introduction_paragraph}</p>
+      <p className={styles.introductionParagraph}>{course.introduction_paragraph}</p>
       <div>
         <Link className={styles.playButton} href={`/course/${course.id}/1` }>Start Course {course_id}</Link>
       </div>
-      <div>
-        <Link className={styles.playButton} href={`/course` }>BACK TO COURSES</Link>
-      </div>
+      
       {
         course.chapters.map((chapter: any) => {
           return (
-            <div key={chapter}> 
-              <ul className={styles.chapterList}>
+            <div className={styles.chapterList} key={chapter}> 
+              <ul>
                 <li className={styles.chapterItem}>
-                  Chapter {chapter.id}: {chapter.title}
+                  <a href={`/course/${course.id}/${chapter.id}` }>
+                    Chapter {chapter.id}: {chapter.title}
+                  </a>
                 </li>
               </ul>
             </div>
           )
         })
       }
+
+      <div>
+        <Link className={styles.backToCourses} href={`/course` }>BACK TO COURSES</Link>
+      </div>
     </div>
   )
 }

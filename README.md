@@ -1,2 +1,2 @@
-# sol-pirates
+# Crypto Corsairs
  learn to anchor platform

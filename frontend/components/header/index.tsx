@@ -14,7 +14,7 @@ function Header() {
         </Link>
         <nav className={styles.navigationMenu}>
           <Link href='/course'>COURSES</Link>
-          <Link href='/about'>ABOUT SOLPIRATES</Link>
+          <Link href='/about'>ABOUT CRYPTO CORSAIRS</Link>
         </nav>
       </div>
     </header>

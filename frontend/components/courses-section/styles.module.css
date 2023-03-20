@@ -29,7 +29,7 @@
   }
 
   .preList li a{
-    color: #4a62cb;
+    color: #3366ff; /* Change link color */
   }
 
   
@@ -55,7 +55,6 @@
     display: flex;
     flex-direction: column; 
     justify-content: center; 
-    
   }
   
 
@@ -63,7 +62,8 @@
     text-align: center;
     text-transform: uppercase;
     margin-top: 8px;
-    font-size: 1em;
+    font-size: 1.2em;
+    font-weight: 600; 
   }
   
   .courseDescription {
@@ -79,18 +79,18 @@
   }
   
   .playButton {
-    display:inline-block;
-    padding:0.35em 1.2em;
-    border:0.1em solid #FFFFFF;
-    margin:0 0.3em 0.3em 0;
-    border-radius:0.12em;
+    display: inline-block;
+    padding: 0.5em 1.4em; /* Increase padding */
+    border: 0.1em solid #FFFFFF;
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 0.3em; /* Increase border-radius */
     box-sizing: border-box;
-    text-decoration:none;
-    font-weight:300;
-    color:#FFFFFF;
-    text-align:center;
+    text-decoration: none;
+    font-weight: 300;
+    color: #FFFFFF;
+    text-align: center;
     transition: all 0.2s;
-    }
+  }
 
     .playButton:hover{
     color:#000000;

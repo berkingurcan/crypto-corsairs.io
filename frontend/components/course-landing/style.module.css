@@ -1,23 +1,67 @@
+/* Add the following to your existing CSS file */
+
 .playButton {
-    display:inline-block;
-    padding:0.35em 1.2em;
-    border:0.1em solid #FFFFFF;
-    margin:0 0.3em 0.3em 0;
-    border-radius:0.12em;
+    display: inline-block;
+    padding: 0.5em 1.4em; /* Increase padding */
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 0.3em; /* Increase border-radius */
     box-sizing: border-box;
-    text-decoration:none;
-    font-weight:300;
-    color:#FFFFFF;
-    text-align:center;
+    text-decoration: none;
+    font-weight: 600;
+    color: #FFFFFF;
+    background-color: #4a62cb;
+    text-align: center;
     transition: all 0.2s;
-    }
+    border: 0.1em solid #CBB34A;
+    background-color: #CBB34A;
+  }
+  
+  .playButton:hover {
+    color: #CBB34A;
+    background-color: #FFFFFF;
+    border-color: #CBB34A;
+  }
+  
+  .landing {
+    text-align: center;
+    margin: 1.2em 2.2em 2.2em 1.3em;
+  }
 
-    .playButton:hover{
-    color:#000000;
-    background-color:#FFFFFF;
-    }
+  /* Add these to your existing CSS file */
 
-    .landing{
-        text-align: center;
-        margin: 1.2em 2.2em 2.2em 1.3em;
-    }
+.courseTitleLanding {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #CBB34A;
+    margin-bottom: 1em;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+  }
+  
+  .courseIntro {
+    font-size: 1.2em;
+    font-weight: 500;
+    color: #ccc;
+    margin-bottom: 1.5em;
+    line-height: 1.6;
+    max-width: 80%;
+    margin: 0 auto;
+  }
+  
+  .chapterList {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    max-width: 80%;
+    margin: 0 auto;
+  }
+  
+  .chapterItem {
+    font-size: 1.1em;
+    font-weight: 500;
+    color: #CBB34A;
+    margin-bottom: 8px;
+  }
+  
+  

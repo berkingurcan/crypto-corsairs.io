@@ -10,7 +10,7 @@ function Header() {
       <div className={styles.headerWrapper}>
         <Link href='/' className={styles.logo}>
           <Image src={Logo} alt={''} className={styles.logoIm}/>
-           ANCHOR&apos;S <span>AWEIGH</span>
+           CRYPTO <span>CORSAIRS</span>
         </Link>
         <nav className={styles.navigationMenu}>
           <Link href='/course'>COURSES</Link>

@@ -1,8 +1,7 @@
 .moviesSection {
-    margin: 36 24 24 24;
-    justify-content: space-around;
-
-  }
+  margin: 36px 24px 24px 24px;
+  justify-content: space-around;
+}
   
   .title {
     margin-bottom: 12px;
@@ -11,6 +10,29 @@
     font-size: 24px;
     letter-spacing: -1px;
   }
+
+  .preTitle {
+    margin-bottom: 12px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 18px;
+    letter-spacing: 0px;
+  }
+
+  .preList {
+    text-align: center;
+    list-style-position: inside;
+  }
+
+  .preList li {
+    text-align: center;
+  }
+
+  .preList li a{
+    color: #4a62cb;
+  }
+
+  
   
   .movies {
     display: grid;
@@ -19,7 +41,19 @@
     gap: 32px;
     margin-top: 24px;
     justify-items: center;
+
   }
+
+  .movie {
+    overflow: hidden;
+    border-radius: 3px;
+    margin-top: 24px;
+    position: relative;
+    box-shadow: 0 5px 10px 0 #4a62cb;
+    transition: transform 0.3s ease;
+    display: flex;
+  }
+  
 
   .courseTitle {
     text-align: center;
@@ -33,16 +67,7 @@
     font-size: 1em;
   }
   
-  .movie {
-    overflow: hidden;
-    border-radius: 3px;
-    margin-top: 24px;
-    position: relative;
-    box-shadow: 0 5px 10px 0 #4a62cb;
-    transition: transform 0.3s ease;
-    display: flex;
-  }
-  
+
   .movie:hover {
     z-index: 9;
     transform: scale(1.01);

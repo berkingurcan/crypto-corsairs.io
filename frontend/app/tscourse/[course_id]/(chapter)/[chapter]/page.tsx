@@ -3,7 +3,7 @@ import TsChapter from '@/containers/tschapter';
 import Congrats from '@/containers/congrats';
 
 async function getData(id: any) {
-    const res = await fetch(process.env.COURSES as string + `course-${id}.json`)
+    const res = await fetch(process.env.COURSES as string + `tscourse-${id}.json`)
   
     if (!res.ok) {
       // This will activate the closest `error.js` Error Boundary

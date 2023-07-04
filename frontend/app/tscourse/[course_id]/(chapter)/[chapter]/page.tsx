@@ -1,5 +1,5 @@
 import React from 'react';
-import Chapter from '@/containers/chapter';
+import TsChapter from '@/containers/tschapter';
 import Congrats from '@/containers/congrats';
 
 async function getData(id: any) {
@@ -28,10 +28,11 @@ async function ChapterPage({params}: any) {
     {
       ourId <= courseLength ? 
       <div>
-        <Chapter course_id={params.course_id} chapter_id={params.chapter} _course={chapter} />
+        <TsChapter course_id={params.course_id} chapter_id={params.chapter} _course={chapter} />
       </div> : <Congrats course_id={params.course_id} />
     }
     </>
   );
 }
 
+export default ChapterPage;

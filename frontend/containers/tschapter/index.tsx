@@ -80,12 +80,11 @@ function TsChapter({course_id, chapter_id, _course}: any) {
 
 
     // create a function userAnswer is typescript code, compile and execute typescript code in the browser with @solana/web3.js dependencies
-    const runCode = () => {
-      const code = userAnswer
+    const runCode = async () => {
+      const code = userAnswer;
 
       const transpiledCode = transpile(code, { target: ScriptTarget.ES5 });
-      const output = eval(transpiledCode)
-      console.log(output)
+
     }
 
     return (

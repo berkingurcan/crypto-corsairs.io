@@ -11,6 +11,8 @@ import TryButton from '@/components/try-button';
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import Link from 'next/link';
+import * as web3 from "@solana/web3.js";
+import { ScriptTarget, transpile } from "typescript";
 
 
 function TsChapter({course_id, chapter_id, _course}: any) {
@@ -74,6 +76,18 @@ function TsChapter({course_id, chapter_id, _course}: any) {
       setStoredCode(stored)
     }, [course_id, chapter_id])
 
+    const [output, setOutput] = useState('');
+
+
+    // create a function userAnswer is typescript code, compile and execute typescript code in the browser with @solana/web3.js dependencies
+    const runCode = () => {
+      const code = userAnswer
+
+      const transpiledCode = transpile(code, { target: ScriptTarget.ES5 });
+      const output = eval(transpiledCode)
+      console.log(output)
+    }
+
     return (
         <div>
         <div className={styles.mainSection}>
@@ -96,7 +110,7 @@ function TsChapter({course_id, chapter_id, _course}: any) {
   
             {
               isClicked && !result ? null
-                : <CheckButton onClick={handleClick} answer={course[chapter_id-1].answer_code}/>
+                : <CheckButton onClick={runCode} answer={course[chapter_id-1].answer_code}/>
             }
   
             {

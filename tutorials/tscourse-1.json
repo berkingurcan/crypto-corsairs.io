@@ -1,0 +1,35 @@
+
+{
+    "id": "1",
+    "title": "Ts Worker",
+    "description": "",
+    "introduction_paragraph": "",
+    "chapters": [
+      {
+        "id": "1",
+        "title": "Getting started",
+        "task_description": "",
+        "instructions": [
+          {
+            "text": "",
+            "code_block": null
+          }
+        ],
+        "initial_code": "",
+        "answer_code": ""
+      },
+      {
+        "id": "2",
+        "title": "Title",
+        "task_description": "",
+        "instructions": [
+          {
+            "text": "",
+            "code_block": null
+          }
+        ],
+        "initial_code": "",
+        "answer_code": ""
+      }
+    ]
+}  

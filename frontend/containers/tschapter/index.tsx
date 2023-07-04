@@ -58,12 +58,12 @@ function TsChapter({course_id, chapter_id, _course}: any) {
     // CODE COURSE LOCAL STORAGE PROCESSING
     useEffect(() => {
       if (userAnswer == course[chapter_id-1].initial_code) return;
-      localStorage.setItem(`code-course-${course_id}-${chapter_id}`, JSON.stringify(userAnswer))
+      localStorage.setItem(`code-tscourse-${course_id}-${chapter_id}`, JSON.stringify(userAnswer))
     })
   
     const [storedCode, setStoredCode] = useState<any | null>(null)
     useEffect(() => {
-      let stored = localStorage.getItem(`code-course-${course_id}-${chapter_id}`)
+      let stored = localStorage.getItem(`tscode-course-${course_id}-${chapter_id}`)
       if (stored) {
         stored = JSON.parse(stored)
         setUserAnswer(stored)
@@ -83,6 +83,7 @@ function TsChapter({course_id, chapter_id, _course}: any) {
               initial_code={storedCode == '' ? course[chapter_id-1].initial_code : storedCode}
               answer_code={answer_code}
               userAnswer={storedCode == '' ? userAnswer : storedCode}
+              defaultLanguage="typescript"
               originalAnswer={userAnswer}
               setUserAnswer={setUserAnswer}
               result={result}

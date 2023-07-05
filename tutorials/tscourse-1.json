@@ -15,7 +15,7 @@
             "code_block": null
           }
         ],
-        "initial_code": "",
+        "initial_code": "import * as web3 from \"@solana/web3.js\";",
         "answer_code": ""
       },
       {

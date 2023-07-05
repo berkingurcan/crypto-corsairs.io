@@ -16,6 +16,7 @@
     "@headlessui/react": "^1.7.8",
     "@monaco-editor/react": "^4.4.6",
     "@next/font": "^13.1.2",
+    "@solana/wallet-adapter-react": "^0.15.32",
     "@solana/web3.js": "^1.77.3",
     "@types/node": "18.11.18",
     "@types/react": "18.0.26",

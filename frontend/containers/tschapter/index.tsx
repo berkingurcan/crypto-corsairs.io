@@ -88,7 +88,7 @@ function TsChapter({course_id, chapter_id, _course}: any) {
     const runCode = async () => {
       const importCodes = `
         importScripts("https://unpkg.com/@solana/web3.js@latest/lib/index.iife.js");
-        const web3 = solanaWeb3;
+        const Web3 = solanaWeb3;
       `;
 
       const code = importCodes + removeImportLines(userAnswer);

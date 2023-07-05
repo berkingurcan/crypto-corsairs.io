@@ -1,0 +1,35 @@
+
+{
+    "id": "1",
+    "title": "Ts Worker",
+    "description": "",
+    "introduction_paragraph": "",
+    "chapters": [
+      {
+        "id": "1",
+        "title": "Get Balance of Public Key",
+        "task_description": "",
+        "instructions": [
+          {
+            "text": "Get balance of your public key and log it to console",
+            "code_block": "console.log(Web3.LAMPORTS_PER_SOL)\n\nconst key = new Web3.PublicKey(\"EX5te2PJoXqSXdEHsw3JCsNEv2PWGYzMkcVnADtNKVes\")\nconst connection = new Web3.Connection(Web3.clusterApiUrl('devnet'))\n\nconnection.getBalance(key).then(balance => {\n    console.log(balance / Web3.LAMPORTS_PER_SOL)\n})"
+          }
+        ],
+        "initial_code": "import * as Web3 from \"@solana/web3.js\";",
+        "answer_code": ""
+      },
+      {
+        "id": "2",
+        "title": "Title",
+        "task_description": "",
+        "instructions": [
+          {
+            "text": "",
+            "code_block": null
+          }
+        ],
+        "initial_code": "",
+        "answer_code": ""
+      }
+    ]
+}  

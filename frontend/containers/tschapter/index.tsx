@@ -92,14 +92,12 @@ function TsChapter({course_id, chapter_id, _course}: any) {
       `;
 
       const code = importCodes + removeImportLines(userAnswer);
-      console.log(code)
 
       const transpiledCode = transpile(code, { target: ScriptTarget.ES5 });
       const blob = new Blob([transpiledCode], { type: "text/javascript" });
 
       const url = URL.createObjectURL(blob);
       const worker = new Worker(url);
-
     }
 
     return (
